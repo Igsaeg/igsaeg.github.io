@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets';
+import banner from "../assets/banner.jpg";
+---
+<section class="hero" aria-labelledby="hero-title">
+    <h1 class="hero-title">KHARL ALFARO.</h1>
+
+    <div class="hero__details">
+        <p class="hero__summary">A self-taught developer based in the Philippines. Exploring web design and frontend by building thoughtful, functional digital experiences.</p>
+
+        <div class="hero-indicator">
+            <p>KEEP SCROLLING</p>
+            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" transform="translate(-164, -6479)" d="M184,6489 L182.607,6487.565 L175,6495.172 L175,6479 L173,6479 L173,6495.172 L165.414,6487.586 L164,6489 C167.661,6492.661 170.496,6495.496 174,6499 L184,6489"/>
+            </svg>     
+        </div>
+
+        <div class="hero__contact">
+            <p>(63+) 939-023-2652</p>
+            <p>kharlfranco26@gmail.com</p>
+        </div>
+    
+    </div>
+
+    <div class="img-wrapper">
+        <Image src={banner} alt="Banner" class="hero-banner img" loading="eager" />
+    </div>
+</section>
+
+<style>
+    .hero {
+        display: flex;
+        flex-direction: column;
+        container-type: inline-size;
+        padding-top: 7rem;
+    }
+
+    .hero-title {   
+        display: inline-block;
+        font-weight: 600;
+        line-height: 0.9;
+        letter-spacing: -5%;
+        overflow: hidden;
+        font-size: 14.1cqw;
+        margin: 0 1rem 8rem;
+    }
+
+    .hero__details {
+        display: grid;
+        grid-template-columns: 1fr 0.5fr 0.5fr;
+        align-items: end;
+        gap: 1rem;
+        margin: 0 2rem 2.5rem;
+    }
+
+    .hero__summary { font-size: 2rem; }
+
+    .hero-indicator {
+        display: flex;
+        gap: 0.5rem;
+        justify-self: center;
+        align-items: center;
+        color: rgba(var(--black), var(--opacity-faint));
+    }
+
+    .hero-indicator p {
+        font-size: 1rem;
+        font-weight: 600;
+        color: inherit;
+    }
+
+    .hero-indicator svg { width: 0.9rem; }
+
+    .hero__contact {
+        text-align: right;
+        justify-self: end;
+    }
+</style>

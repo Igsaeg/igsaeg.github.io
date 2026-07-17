@@ -1,0 +1,66 @@
+<nav class="site-nav" aria-label="Primary navigation">
+        <h3 class="site-nav__brand">igsaeg</h3>
+        <div class="site-nav__links">
+            <button>Works</button>
+            <button>About</button>
+            <button class="special">Home</button>
+        </div>
+</nav>
+
+<style>
+    .site-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        padding: 1.5rem 1.5rem 0;
+    }
+
+    .site-nav__brand, .site-nav__links {
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 1.25rem;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        box-shadow: 0px 2px 4px rgba(var(--black), 0.2);
+    }
+
+    .site-nav__brand {
+        font-family: var(--font-secondary);
+        font-size: 1.1rem;
+        font-weight: 600;
+        width: fit-content;
+        height: fit-content;
+        padding: 1rem 1.4rem;
+    }
+
+    .site-nav__links {
+        justify-self: end;
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    button {
+        font-family: var(--font-secondary);
+        font-size: 1rem;
+        color: rgb(var(--black));
+        background: none;
+        border: none;
+        border-radius: 1rem;
+        padding: 0.8rem 1.25rem;
+    }
+
+    button.special {
+        background-color: rgb(var(--black));
+        color: rgb(var(--off-white));
+    }
+
+    button:hover { background-color: rgb(var(--off-white)); }
+
+    button.special:hover { color: rgb(var(--black)); }
+</style>

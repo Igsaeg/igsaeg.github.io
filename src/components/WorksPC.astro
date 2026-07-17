@@ -1,0 +1,192 @@
+---
+import rewind from "../assets/rewind.png";
+import billsCreditCard from "../assets/bills-credit-card.png";
+import typingGame from "../assets/typing-game.png";
+import clickerGame from "../assets/clicker-game.png";
+
+---
+<section class="works" aria-labelledby="works-title">
+    <div class="works__intro">
+        <h2 class="works-title">THOUGHTFUL DESIGN. <br> CLEAN DEVELOPMENT.</h2>
+        <p class="eyebrow">01 - SELECTED WORK</p>
+    </div>
+
+    <div class="works__container">
+        <div class="divider"></div>
+        <a href="https://igsaeg.github.io/rewind" class="works__item works-item__rewind">
+            <p class="works-item__number">(01)</p>
+            <h3 class="works-item__name">REWIND</h3>
+            <div class="item-name__details">
+                <p class="name-details__year">2026</p>
+                <p class="name-details__stack">Vite · React</p>
+            </div>
+            <span class="hover-fill"></span>
+        </a>
+        <div class="divider"></div>
+        <a href="https://igsaeg.github.io/bills-credit-card" class="works__item works-item__bcc">
+            <h4 class="works-item__number">(02)</h4>
+            <h3 class="works-item__name">BILLS CREDIT CARD</h3>
+            <div class="item-name__details">
+                <p class="name-details__year">2023</p>
+                <p class="name-details__stack">HTML · JavaScript</p>
+            </div>
+            <span class="hover-fill"></span>
+        </a>
+        <div class="divider"></div>
+        <a href="https://igsaeg.github.io/typing-game" class="works__item works-item__typing-game">
+            <h4 class="works-item__number">(03)</h4>
+            <h3 class="works-item__name">TYPING GAME</h3>
+            <div class="item-name__details">
+                <p class="name-details__year">2023</p>
+                <p class="name-details__stack">HTML · JavaScript</p>
+            </div>
+            <span class="hover-fill"></span>
+        </a>
+        <div class="divider"></div>
+        <a href="https://igsaeg.github.io/clicker-game" class="works__item works-item__clicker-game">
+            <h4 class="works-item__number">(04)</h4>
+            <h3 class="works-item__name">CLICKER GAME</h3>
+            <div class="item-name__details">
+                <p class="name-details__year">2023</p>
+                <p class="name-details__stack">HTML · JavaScript</p>
+            </div>
+            <span class="hover-fill"></span>
+        </a>
+        <div class="divider"></div>
+        <div class="works__item works-item__last">
+            <p>Built through curiosity, iteration, and countless revisions. These are the projects that best represent how I think and build.</p>
+        </div>
+    </div>
+
+    <img
+        class="works-item__preview"
+        src={rewind.src}
+        data-rewind={rewind.src}
+        data-bcc={billsCreditCard.src}
+        data-typing={typingGame.src}
+        data-clicker={clickerGame.src}
+        alt=""
+    />
+</section>
+
+<style>
+    .works {
+        display: flex;
+        flex-direction: column;
+        gap: 8rem;
+        padding: 1.75rem 0 10rem;
+    }
+
+    .works__intro {
+        display: grid;
+        grid-template-columns: auto auto;
+        margin: 0 2rem;
+    }
+
+    .works__intro p {
+        justify-self: flex-end;
+        align-self: flex-end;
+    }
+
+    .works__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .works__item {
+        position: relative;
+        display: grid;
+        grid-template-columns: 0.4fr 1.5fr 0.75fr;
+        align-items: end;
+        padding: 3.5rem 4rem;
+    }
+
+    .hover-fill {
+        position: absolute;
+        bottom: 0;
+        background: rgb(var(--off-white));
+        mix-blend-mode: difference;
+        height: 0;
+        width: 100%;
+        transition: var(--transition-slow);
+    }
+
+    .works__item:hover .hover-fill {
+        height: 100%;
+    }
+
+    .works-item__number {
+        font-family: var(--font-secondary);
+        font-size: 1.25rem;
+        font-weight: 500;
+    }
+
+    .works-item__name {
+        font-size: 4.75rem;
+        font-weight: 600;
+        display: inline-block;
+        line-height: 0.8;
+        transition: var(--transition-slow);
+    }
+
+    .works__item:hover .works-item__name:not(.works-item__last) { transform: scale(0.98); }
+    
+    .item-name__details {
+        justify-self: end;
+        text-align: right;
+    }
+
+    .name-details__year {
+        font-family: var(--font-secondary);
+        font-size: 2rem;
+        font-weight: 400;
+    }
+
+    .name-details__stack {
+        font-size: 1.1rem;
+    }
+
+    .works-item__last p { grid-column: 2; }
+
+    .works-item__preview {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 18rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--transition-slow);
+    }
+</style>
+
+<script>
+    const works = document.querySelectorAll(".works__item:not(.works-item__last)");
+    const preview = document.querySelector(".works-item__preview") as HTMLImageElement;
+
+    const classToData = {
+        "works-item__rewind": preview.dataset.rewind,
+        "works-item__bcc": preview.dataset.bcc,
+        "works-item__typing-game": preview.dataset.typing,
+        "works-item__clicker-game": preview.dataset.clicker
+    };
+
+    works.forEach(work => {
+        work.addEventListener("mouseenter", () => {
+            const classList = [...work.classList];
+            for (const [cls, src] of Object.entries(classToData)) {
+                if (classList.includes(cls)) {
+                    if (src) preview.src = src;
+                    break;
+                }
+            }
+            preview.style.opacity = "1";
+        });
+        work.addEventListener("mouseleave", () => {
+            preview.style.opacity = "0";
+        });
+    });    
+
+    window.addEventListener("mousemove", (e) => {
+        preview.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+</script>
