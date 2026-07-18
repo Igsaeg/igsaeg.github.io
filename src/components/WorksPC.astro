@@ -6,60 +6,60 @@ import clickerGame from "../assets/clicker-game.png";
 
 ---
 <section class="works" aria-labelledby="works-title">
-    <div class="works__intro">
-        <h2 class="works-title">THOUGHTFUL DESIGN. <br> CLEAN DEVELOPMENT.</h2>
+    <div class="intro">
+        <h2>THOUGHTFUL DESIGN. CLEAN DEVELOPMENT.</h2>
         <p class="eyebrow">01 - SELECTED WORK</p>
     </div>
 
-    <div class="works__container">
+    <div class="item-container">
         <div class="divider"></div>
-        <a href="https://igsaeg.github.io/rewind" class="works__item works-item__rewind">
-            <p class="works-item__number">(01)</p>
-            <h3 class="works-item__name">REWIND</h3>
-            <div class="item-name__details">
-                <p class="name-details__year">2026</p>
-                <p class="name-details__stack">Vite · React</p>
+        <a href="https://igsaeg.github.io/rewind" class="item item__rewind">
+            <p class="item__number">[01]</p>
+            <h3 class="item__name">REWIND</h3>
+            <div class="item__details">
+                <p class="details__year">2026</p>
+                <p class="details__stack">Vite · React</p>
             </div>
             <span class="hover-fill"></span>
         </a>
         <div class="divider"></div>
-        <a href="https://igsaeg.github.io/bills-credit-card" class="works__item works-item__bcc">
-            <h4 class="works-item__number">(02)</h4>
-            <h3 class="works-item__name">BILLS CREDIT CARD</h3>
-            <div class="item-name__details">
-                <p class="name-details__year">2023</p>
-                <p class="name-details__stack">HTML · JavaScript</p>
+        <a href="https://igsaeg.github.io/bills-credit-card" class="item item__bcc">
+            <h4 class="item__number">[02]</h4>
+            <h3 class="item__name">BILLS CREDIT CARD</h3>
+            <div class="item__details">
+                <p class="details__year">2023</p>
+                <p class="details__stack">HTML · JavaScript</p>
             </div>
             <span class="hover-fill"></span>
         </a>
         <div class="divider"></div>
-        <a href="https://igsaeg.github.io/typing-game" class="works__item works-item__typing-game">
-            <h4 class="works-item__number">(03)</h4>
-            <h3 class="works-item__name">TYPING GAME</h3>
-            <div class="item-name__details">
-                <p class="name-details__year">2023</p>
-                <p class="name-details__stack">HTML · JavaScript</p>
+        <a href="https://igsaeg.github.io/typing-game" class="item item__typing-game">
+            <h4 class="item__number">[03]</h4>
+            <h3 class="item__name">TYPING GAME</h3>
+            <div class="item__details">
+                <p class="details__year">2023</p>
+                <p class="details__stack">HTML · JavaScript</p>
             </div>
             <span class="hover-fill"></span>
         </a>
         <div class="divider"></div>
-        <a href="https://igsaeg.github.io/clicker-game" class="works__item works-item__clicker-game">
-            <h4 class="works-item__number">(04)</h4>
-            <h3 class="works-item__name">CLICKER GAME</h3>
-            <div class="item-name__details">
-                <p class="name-details__year">2023</p>
-                <p class="name-details__stack">HTML · JavaScript</p>
+        <a href="https://igsaeg.github.io/clicker-game" class="item item__clicker-game">
+            <h4 class="item__number">[04]</h4>
+            <h3 class="item__name">CLICKER GAME</h3>
+            <div class="item__details">
+                <p class="details__year">2023</p>
+                <p class="details__stack">HTML · JavaScript</p>
             </div>
             <span class="hover-fill"></span>
         </a>
         <div class="divider"></div>
-        <div class="works__item works-item__last">
+        <div class="item item__last">
             <p>Built through curiosity, iteration, and countless revisions. These are the projects that best represent how I think and build.</p>
         </div>
     </div>
 
     <img
-        class="works-item__preview"
+        class="item__preview"
         src={rewind.src}
         data-rewind={rewind.src}
         data-bcc={billsCreditCard.src}
@@ -73,32 +73,32 @@ import clickerGame from "../assets/clicker-game.png";
     .works {
         display: flex;
         flex-direction: column;
-        gap: 8rem;
-        padding: 1.75rem 0 10rem;
+        gap: 6rem;
+        padding: 1.75rem 0 16rem;
     }
 
-    .works__intro {
+    .intro {
         display: grid;
         grid-template-columns: auto auto;
         margin: 0 2rem;
     }
 
-    .works__intro p {
+    .intro p {
         justify-self: flex-end;
         align-self: flex-end;
     }
 
-    .works__container {
+    .item-container {
         display: flex;
         flex-direction: column;
     }
 
-    .works__item {
+    .item {
         position: relative;
         display: grid;
-        grid-template-columns: 0.4fr 1.5fr 0.75fr;
+        grid-template-columns: 0.5fr 1.5fr 0.75fr;
         align-items: end;
-        padding: 3.5rem 4rem;
+        padding: 3.5rem 2rem;
     }
 
     .hover-fill {
@@ -111,17 +111,17 @@ import clickerGame from "../assets/clicker-game.png";
         transition: var(--transition-slow);
     }
 
-    .works__item:hover .hover-fill {
+    .item:hover .hover-fill {
         height: 100%;
     }
 
-    .works-item__number {
+    .item__number {
         font-family: var(--font-secondary);
         font-size: 1.25rem;
         font-weight: 500;
     }
 
-    .works-item__name {
+    .item__name {
         font-size: 4.75rem;
         font-weight: 600;
         display: inline-block;
@@ -129,26 +129,26 @@ import clickerGame from "../assets/clicker-game.png";
         transition: var(--transition-slow);
     }
 
-    .works__item:hover .works-item__name:not(.works-item__last) { transform: scale(0.98); }
+    .item:hover .item__name:not(.item__last) { transform: scale(0.97); }
     
-    .item-name__details {
+    .item__details {
         justify-self: end;
         text-align: right;
     }
 
-    .name-details__year {
+    .details__year {
         font-family: var(--font-secondary);
         font-size: 2rem;
         font-weight: 400;
     }
 
-    .name-details__stack {
+    .details__stack {
         font-size: 1.1rem;
     }
 
-    .works-item__last p { grid-column: 2; }
+    .item__last p { grid-column: 2; }
 
-    .works-item__preview {
+    .item__preview {
         position: fixed;
         top: 0;
         left: 0;
@@ -160,14 +160,14 @@ import clickerGame from "../assets/clicker-game.png";
 </style>
 
 <script>
-    const works = document.querySelectorAll(".works__item:not(.works-item__last)");
-    const preview = document.querySelector(".works-item__preview") as HTMLImageElement;
+    const works = document.querySelectorAll(".item:not(.item__last)");
+    const preview = document.querySelector(".item__preview") as HTMLImageElement;
 
     const classToData = {
-        "works-item__rewind": preview.dataset.rewind,
-        "works-item__bcc": preview.dataset.bcc,
-        "works-item__typing-game": preview.dataset.typing,
-        "works-item__clicker-game": preview.dataset.clicker
+        "item__rewind": preview.dataset.rewind,
+        "item__bcc": preview.dataset.bcc,
+        "item__typing-game": preview.dataset.typing,
+        "item__clicker-game": preview.dataset.clicker
     };
 
     works.forEach(work => {

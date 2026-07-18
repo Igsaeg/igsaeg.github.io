@@ -26,8 +26,7 @@
     document.addEventListener('mousemove', (e) => {
         cursor.style.opacity = '1';
         cursor.style.visibility = 'visible';
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
     });
 
     document.addEventListener('mouseleave', () => {
