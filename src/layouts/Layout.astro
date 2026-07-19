@@ -1,6 +1,6 @@
 ---
-import Global from '../global.astro';
-import CustomCursor from '../components/customCursor.astro';
+import '../styles/global.css'
+import Cursor from '../components/Cursor.astro';
 ---
 
 <!doctype html>
@@ -12,11 +12,10 @@ import CustomCursor from '../components/customCursor.astro';
 		<meta name="generator" content={Astro.generator} />
 
 		<title>Igsaeg</title>
-        <Global />
 	</head>
 
 	<body>
-        <CustomCursor />
+        <Cursor />
 		<slot />
 	</body>
 </html>
