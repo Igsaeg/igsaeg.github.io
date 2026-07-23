@@ -1,6 +1,21 @@
-<section class="mx-4 pb-60">
-    <div class="@container">
-        <p class="mr-[20%] justify-self-end eyebrow">02 — ABOUT</p>
-        <h1 class="text-[9.7cqw] indent-48">THE STORY BEHIND THE WORK.</h1>
+---
+import ParallaxImg from './ParallaxImg.astro'
+import portrait from '../assets/portrait.jpg'
+---
+<section class="flex flex-col gap-40 mx-8 pb-60">
+    <div class="grid grid-cols-[1fr_auto]">
+        <h1 class="text-[11rem]">BEHIND THE DESIGN.</h1>
+        <p class="eyebrow self-end">02 — ABOUT ME</p>
+    </div>
+
+    <div class="grid grid-cols-[0.75fr_1fr]">
+        <ParallaxImg src={portrait} class="w-88" />
+        <div class="@container flex flex-col gap-14">
+            <h3 class="text-[7.94cqw]">FROM CURIOSITY TO CODE.</h3>
+            <div class="flex flex-col gap-8 mr-[20%]">
+                <p>Hi! I'm Kharl, a 20 year old developer based in the Philippines. I focus on Front-End Development and UI/UX. </p>
+                <p>I dedicate my time learning new things and improving my skills. I build my projects while exploring new concepts and technologies.</p>
+            </div>
+        </div>
     </div>
 </section>

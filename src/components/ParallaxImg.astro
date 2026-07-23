@@ -1,35 +1,38 @@
 ---
 import { Image } from 'astro:assets';
-const { src } = Astro.props
+const { src, class: className } = Astro.props
 ---
-<div class="wrapper">
-    <Image src={src} alt="Banner" class="img" loading="eager" />
+<div class:list={["overflow-hidden", className]}>
+    <Image
+        src={src}
+        alt="Banner"
+        class="img block w-full h-auto pointer-events-none select-none"
+        loading="eager"
+    />
 </div>
 
-<style>
-    .wrapper { overflow: hidden; }
-
-    .img {
-        display: block;
-        width: 100%;
-        height: auto;
-        pointer-events: none;
-        user-select: none;
-    }
-</style>
-
 <script>
-    const banner = document.querySelector(".img") as HTMLElement;
+    const img = document.querySelectorAll(".img") as NodeListOf<HTMLElement>;
 
     function animate() {
-        const scrollY = window.scrollY;
-        const baseOffset = -70;
-        const parallax = scrollY * 0.15;
+        const viewportHeight = window.innerHeight;
 
-        banner.style.transform = `translateY(${baseOffset + parallax}px)`;
+        img.forEach((img) => {
+            const rect = img.getBoundingClientRect();
+            const isInView = rect.top < viewportHeight && rect.bottom > 0;
+
+            if (!isInView) {
+                img.style.transform = 'translateY(0px)';
+                return;
+            }
+
+            const baseOffset = -50;
+            const parallax = (viewportHeight - rect.top) * 0.075;
+            img.style.transform = `translateY(${baseOffset + parallax}px)`;
+        });
 
         requestAnimationFrame(animate);
     }
 
-    animate();
+    requestAnimationFrame(animate);
 </script>
