@@ -24,14 +24,15 @@
     --font-secondary: 'Stack Sans Text';
 
     --bg: #fff;
-    --faint: #ccc;
-    --black: #111111;
     --off-white: #eee;
-    --black-faint: #6d6d6d;
+    --faint: #ccc;
+    --muted: #6d6d6d;
+    --black: #111111;
 
     --underline-h: 3px;
     --transition: 0.2s ease;
     --transition-slow: 0.35s ease;
+    --transition-underline: 0.45s;
 }
 
 ::selection {
@@ -39,22 +40,15 @@
     color: var(--bg);
 }
 
-::-webkit-scrollbar { display: none; }
-
 * {
     box-sizing: border-box;
     cursor: none !important;
 }
 
-html {
-    font-size: 16px;
-    scroll-behavior: smooth;
-}
+::-webkit-scrollbar { display: none; }
 
 body {
-    position: relative;
     margin: 0;
-    font-size: 1rem;
     background-color: var(--bg);
 }
 
@@ -66,20 +60,17 @@ body {
         letter-spacing: -2%;
         margin: 0;
     }
-
     h2, h3, h4 { line-height: 1; }
 
     h1 { line-height: 0.9; }
-
     h2 { font-size: 5.5rem; }
-
     h3 { font-size: 4.75rem; }
+    h4 { font-size: 4.25rem; }
 
     p {
-        font-size: 2rem;
-        line-height: 1.3;
+        font-size: 1.75rem;
+        line-height: 1.2;
     }
-
     a {
         color: inherit;
         text-decoration: none;
@@ -87,10 +78,8 @@ body {
 
     .eyebrow {
         font-family: var(--font-secondary);
-        font-size: 1.3rem;
+        font-size: 1.25rem;
         font-weight: 400;
-        color: var(--black-faint);
+        color: var(--muted);
     }
-
-    .divider { border-top: 2px solid var(--faint); }
 }

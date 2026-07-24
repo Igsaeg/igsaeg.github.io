@@ -2,30 +2,30 @@
 import ParallaxImg from './ParallaxImg.astro'
 import banner from '../assets/banner.jpg'
 ---
-<section class="@container pt-20">
-    <h1 class="text-[14.1cqw] whitespace-nowrap font-semibold tracking-[-5%] mx-4 mb-28">KHARL ALFARO.</h1>
+<section class="@container pt-24">
+    <h1 class="text-[14.5cqw] whitespace-nowrap font-semibold tracking-[-5%] mx-5 mb-28">KHARL ALFARO</h1>
 
     <div class="grid grid-cols-[1fr_0.5fr_0.5fr] items-end gap-4 mx-8 mb-6">
-        <p>A self-taught developer based in the Philippines. Exploring web design and frontend by building thoughtful, functional digital experiences.</p>
+        <p class="text-[2rem]">A self-taught developer based in the Philippines. Exploring web design and frontend by building thoughtful, functional digital experiences.</p>
 
-        <div class="flex gap-2 justify-self-center items-center text-(--black-faint)">
+        <div class="flex gap-2 justify-self-center items-center text-(--muted)">
             <p class="text-[1.25rem] font-semibold text-inherit">KEEP SCROLLING</p>
             <svg class="w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill="currentColor" d="M20,10 L18.607,8.565 L11,16.172 L11,0 L9,0 L9,16.172 L1.414,8.586 L0,10 C3.661,13.661 6.496,16.496 10,20 L20,10" />
+                <path fill="currentColor" stroke="currentColor" stroke-width="0.75" d="M20,10 L18.607,8.565 L11,16.172 L11,0 L9,0 L9,16.172 L1.414,8.586 L0,10 C3.661,13.661 6.496,16.496 10,20 L20,10" />
             </svg>     
         </div>
 
         <div class="flex flex-col items-end">
             <a href="https://github.com/Igsaeg" class="group inline-flex flex-col">
-                <p>GitHub,</p>
-                <div class="bg-(--black) w-0 h-(--underline-h) [transition:var(--transition-slow)] group-hover:w-full"></div>
+                <p class="text-[2rem]">GitHub,</p>
+                <div class="bg-(--black) w-0 h-(--underline-h) [transition:var(--transition-underline)] group-hover:w-full"></div>
             </a>
             <a href="mailto:kharlfranco26@gmail.com" class="group inline-flex flex-col">
-                <p>kharlfranco26@gmail.com</p>
-                <div class="bg-(--black) w-0 h-(--underline-h) [transition:var(--transition-slow)] group-hover:w-full"></div>
+                <p class="text-[2rem]">kharlfranco26@gmail.com</p>
+                <div class="bg-(--black) w-0 h-(--underline-h) [transition:var(--transition-underline)] group-hover:w-full"></div>
             </a>
         </div>
     </div>
 
-    <ParallaxImg src={banner} />
+    <ParallaxImg src={banner} loading="eager" />
 </section>
