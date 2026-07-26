@@ -1,0 +1,7 @@
+---
+const { title, size, color, action } = Astro.props;
+---
+<a href={action} class="group relative w-fit">
+    <p style={`font-size: ${!size ? "2rem" : size}; color: var(${color});`}>{title}</p>
+    <span class={`absolute block bg-(${color}) w-0 h-0.75 mt-1 [transition:var(--transition-underline)] group-hover:w-full`}></span>
+</a>

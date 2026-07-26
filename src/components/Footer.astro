@@ -1,0 +1,38 @@
+---
+import UnderlineLinks from "./UnderlineLinks.astro"
+---
+<section class="flex flex-col gap-32 bg-(--black) text-(--off-white) py-10">
+    <div class="grid grid-cols-[1fr_1fr] mx-8">
+        <div>
+            <h3 class="text-inherit mb-6">IGSAEG</h3>
+            <p class="text-inherit mr-[12%]">A developer exploring minimalist design through thoughtful and functional web experiences.</p>
+        </div>
+        <div class="grid grid-cols-2">
+            <div>
+                <p class="eyebrow mb-6">GO TO</p>
+                <div class="flex flex-col gap-4">
+                    <UnderlineLinks title="Home" color="--off-white" />
+                    <UnderlineLinks title="Works" color="--off-white" />
+                    <UnderlineLinks title="About" color="--off-white" />
+                </div>
+            </div>
+            <div>
+                <p class="eyebrow mb-6">SOCIALS</p>
+                <div class="flex flex-col gap-4">
+                    <UnderlineLinks title="GitHub" color="--off-white" action="https://github.com/Igsaeg" />
+                    <UnderlineLinks title="kharlfranco26@gmail.com" color="--off-white" action="mailto:kharlfranco26@gmail.com" />
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div>
+        <h1 class="text-[14.6cqw] text-inherit whitespace-nowrap tracking-[-5%] mx-5 mb-6">KHARL ALFARO</h1>
+
+        <div class="flex justify-between text-(--muted) mx-8">
+            <p class="text-[1.5rem] text-inherit">©2026 KHARL ALFARO</p>
+            <p class="text-[1.5rem] text-inherit">Built with HTML, CSS & JavaScript</p>
+        </div>
+    </div>
+</section>

@@ -1,17 +1,11 @@
-<nav class="fixed top-0 z-10 flex justify-between items-center w-full px-8 pt-8 text-(--off-white) mix-blend-difference select-none">
-    <p class="text-[1.75rem] text-inherit font-semibold">IGSAEG</p>
+---
+import UnderlineLinks from './UnderlineLinks.astro'
+---
+<nav class="fixed top-0 z-10 flex justify-between items-center w-full px-8 pt-10 mix-blend-difference select-none">
+    <p class="text-[1.75rem] text-(--off-white) font-semibold">IGSAEG</p>
     <div class="flex gap-8">
-        <a class="group inline-flex flex-col">
-            <p class="text-[1.25rem] text-inherit leading-[1.4]">Home</p>
-            <div class="bg-(--off-white) w-0 h-(--underline-h) [transition:var(--transition-underline)] group-hover:w-full"></div>
-        </a>
-        <a class="group inline-flex flex-col">
-            <p class="text-[1.25rem] text-inherit leading-[1.4]">Works</p>
-            <div class="bg-(--off-white) w-0 h-(--underline-h) [transition:var(--transition-underline)] group-hover:w-full"></div>
-        </a>
-        <a class="group inline-flex flex-col">
-            <p class="text-[1.25rem] text-inherit leading-[1.4]">About</p>
-            <div class="bg-(--off-white) w-0 h-(--underline-h) [transition:var(--transition-underline)] group-hover:w-full"></div>
-        </a>
+        <UnderlineLinks title="Home" color="--off-white" size="1.25rem" />
+        <UnderlineLinks title="Works" color="--off-white" size="1.25rem" />
+        <UnderlineLinks title="About" color="--off-white" size="1.25rem" />
     </div>
 </nav>

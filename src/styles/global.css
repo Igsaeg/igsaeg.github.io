@@ -29,15 +29,14 @@
     --muted: #6d6d6d;
     --black: #111111;
 
-    --underline-h: 3px;
     --transition: 0.2s ease;
     --transition-slow: 0.35s ease;
     --transition-underline: 0.45s;
 }
 
 ::selection {
-    background: var(--black);
-    color: var(--bg);
+    background: var(--muted);
+    color: var(--off-white);
 }
 
 * {
@@ -58,6 +57,7 @@ body {
         font-weight: 500;
         color: var(--black);
         letter-spacing: -2%;
+        text-box: trim-both cap alphabetic;
         margin: 0;
     }
     h2, h3, h4 { line-height: 1; }
@@ -77,9 +77,8 @@ body {
     }
 
     .eyebrow {
-        font-family: var(--font-secondary);
         font-size: 1.25rem;
-        font-weight: 400;
+        font-weight: 600;
         color: var(--muted);
     }
 }

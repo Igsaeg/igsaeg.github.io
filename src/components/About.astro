@@ -2,62 +2,67 @@
 import ParallaxImg from './ParallaxImg.astro'
 import portrait from '../assets/portrait.jpg'
 ---
-<section class="flex flex-col gap-48 mx-8 pb-24">
-    <div class="grid grid-cols-[1fr_auto]">
+<section class="flex flex-col gap-52 mx-8 pb-56">
+    <div class="grid grid-cols-[1fr_auto] ">
         <h1 class="text-[13rem]">BEHIND THE DESIGN.</h1>
+
         <svg class="w-40 self-end" viewBox="-20.34 24.84 60.72 60.72" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="0">
             <polygon transform="rotate(45, 8.333, 8.333)" points="78.575,33.787 47.444,64.918 47.444,2.124 37.887,2.124 37.887,64.918 6.757,33.787 0,40.543 42.667,83.21 85.333,40.543"/>
         </svg>
     </div>
 
-    <div class="grid grid-cols-[0.75fr_1fr]">
+    <div class="grid grid-cols-[0.75fr_1fr] ">
         <ParallaxImg src={portrait} class="w-92" loading="lazy"/>
-        <div class="@container flex flex-col justify-between">
+        <div class="flex flex-col justify-between">
             <h4>LEARNING NEVER STOPS, AND NEITHER DO I.</h4>
 
             <div class="grid grid-cols-[0.4fr_1fr]">
-                <p class="eyebrow">02 — ABOUT ME</p>
+                <p class="eyebrow">03 — ABOUT ME</p>
 
                 <div class="flex flex-col gap-8 mr-[16%]">
-                    <p class="text-[1.5rem]">Hi! I'm Kharl, a 20 year old developer based in the Philippines. I focus on Front-End Development and UI/UX Design.</p>
+                    <p class="text-[1.5rem]">Hi! I'm Kharl, a 20 year old developer based in the Philippines. I focus on Front-End and UI/UX Design.</p>
                     <p class="text-[1.5rem]">I dedicate my time learning new things and improving my skills. I build my projects while exploring new concepts and technologies.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="grid grid-cols-[0.75fr_1fr]">
-        <h2>WHAT I USE</h2>
-        <div class="grid grid-cols-4">
+    <div>
+        <div class="grid grid-cols-[23rem_1fr] mb-32">
+            <p class="eyebrow">04 — TECH STACK</p>
+            <h2>TOOLS DON'T BUILD PRODUCTS. PEOPLE DO.</h2>
+        </div>
+
+        <div class="grid grid-cols-4 ml-92">
             <div>
-                <p class="eyebrow mb-3">Languages</p>
-                <ul class="flex flex-col gap-1">
-                    <li><p>HTML</p></li>
-                    <li><p>CSS</p></li>
-                    <li><p>JavaScript</p></li>
-                    <li><p>Python</p></li>
+                <p class="eyebrow mb-6">LANGUAGES</p>
+                <ul class="flex flex-col gap-4">
+                    <li><p class="text-[2.25rem]">HTML</p></li>
+                    <li><p class="text-[2.25rem]">CSS</p></li>
+                    <li><p class="text-[2.25rem]">JavaScript</p></li>
+                    <li><p class="text-[2.25rem]">Python</p></li>
                 </ul>
             </div>
             <div>
-                <p class="eyebrow mb-3">Frameworks</p>
-                <ul class="flex flex-col gap-1">
-                    <li><p>React</p></li>
-                    <li><p>Astro</p></li>
+                <p class="eyebrow mb-6">FRAMEWORKS</p>
+                <ul class="flex flex-col gap-4">
+                    <li><p class="text-[2.25rem]">React</p></li>
+                    <li><p class="text-[2.25rem]">Astro</p></li>
                 </ul>
             </div>
             <div>
-                <p class="eyebrow mb-3">Styling</p>
-                <ul class="flex flex-col gap-1">
-                    <li><p>Tailwind</p></li>
+                <p class="eyebrow mb-6">STYLING</p>
+                <ul class="flex flex-col gap-4">
+                    <li><p class="text-[2.25rem]">Tailwind</p></li>
                 </ul>
             </div>
             <div>
-                <p class="eyebrow mb-3">Tools</p>
-                <ul class="flex flex-col gap-1">
-                    <li><p>Git</p></li>
-                    <li><p>GitHub</p></li>
-                    <li><p>Figma</p></li>
-                    <li><p>VS Code</p></li>
+                <p class="eyebrow mb-6">TOOLS</p>
+                <ul class="flex flex-col gap-4">
+                    <li><p class="text-[2.25rem]">Git</p></li>
+                    <li><p class="text-[2.25rem]">GitHub</p></li>
+                    <li><p class="text-[2.25rem]">Figma</p></li>
+                    <li><p class="text-[2.25rem]">VS Code</p></li>
                 </ul>
             </div>
         </div>
