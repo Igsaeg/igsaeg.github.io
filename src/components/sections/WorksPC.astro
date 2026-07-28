@@ -1,0 +1,81 @@
+---
+import WorksItem from "../ui/WorksItem.astro";
+import rewind from "../../assets/rewind.png";
+import billsCreditCard from "../../assets/bills-credit-card.png";
+import typingGame from "../../assets/typing-game.png";
+import clickerGame from "../../assets/clicker-game.png";
+---
+<section class="flex flex-col gap-24 pt-8 pb-88">
+    <div class="grid grid-cols-[1fr_auto] mx-8">
+        <h2 class="line-slow">EVERY PROJECT, A STEP FORWARD.</h2>
+        <p class="char-fast eyebrow justify-self-end self-end">02 — SELECTED WORK</p>
+    </div>
+
+    <div>
+        <WorksItem index="01" title="REWIND" slug="rewind" year="2026" desc="Digital Gallery" href="https://igsaeg.github.io/rewind" />
+        <WorksItem index="02" title="BILLS CREDIT CARD" slug="bcc" year="2023" desc="Spending Game" href="https://igsaeg.github.io/bills-credit-card" />
+        <WorksItem index="03" title="TYPING GAME" slug="typing-game" year="2023" desc="Typing Practice" href="https://igsaeg.github.io/typing-game" />
+        <WorksItem index="04" title="CLICKER GAME" slug="clicker-game" year="2023" desc="Clicker Game" href="https://igsaeg.github.io/clicker-game" />
+
+        <div class="border-t-2 border-t-(--faint)"></div>
+
+        <div class="item item__last grid grid-cols-[0.5fr_1.5fr_0.75fr] items-end px-8 py-14">
+            <p class="col-2">Built through curiosity, iteration, and countless revisions. These are the projects that best represent how I think and build.</p>
+        </div>
+    </div>
+
+    <img
+        class="item__preview fixed left-0 top-0 w-76 pointer-events-none opacity-0 [transition:opacity_var(--transition-slow)]"
+        src={rewind.src}
+        data-rewind={rewind.src}
+        data-bcc={billsCreditCard.src}
+        data-typing={typingGame.src}
+        data-clicker={clickerGame.src}
+        alt=""
+    />
+</section>
+
+<script>
+    const works = document.querySelectorAll(".item:not(.item__last)");
+    const preview = document.querySelector(".item__preview") as HTMLImageElement;
+
+    const classToData = {
+        "item__rewind": preview.dataset.rewind,
+        "item__bcc": preview.dataset.bcc,
+        "item__typing-game": preview.dataset.typing,
+        "item__clicker-game": preview.dataset.clicker
+    };
+
+    works.forEach(work => {
+        work.addEventListener("mouseenter", () => {
+            const classList = [...work.classList];
+            for (const [cls, src] of Object.entries(classToData)) {
+                if (classList.includes(cls)) {
+                    if (src) preview.src = src;
+                    break;
+                }
+            }
+            preview.style.opacity = "1";
+        });
+        work.addEventListener("mouseleave", () => {
+            preview.style.opacity = "0";
+        });
+    });    
+
+    let x = 0, y = 0, mouseX = 0, mouseY = 0;
+
+    window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function animate() {
+        x += (mouseX - x) * 0.2;
+        y += (mouseY - y) * 0.2;
+
+        preview.style.transform = `translate(${x+8}px, ${y}px)`;
+
+        requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+</script>

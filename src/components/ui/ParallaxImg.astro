@@ -1,8 +1,9 @@
 ---
 import { Image } from 'astro:assets';
+
 const { src, class: className, loading: type } = Astro.props
 ---
-<div class:list={["overflow-hidden", className]}>
+<div class={`overflow-hidden ${className}`}>
     <Image
         src={src}
         alt="Banner"
