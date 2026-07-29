@@ -57,6 +57,8 @@ body {
         font-weight: 500;
         color: var(--black);
         margin: 0;
+        font-kerning: none;
+        -webkit-font-kerning: none;
     }
     h2, h3, h4 { line-height: 1; }
 
@@ -78,6 +80,7 @@ body {
         font-size: 1.25rem;
         font-weight: 600;
         color: var(--muted);
+        padding-top: 1fr;
     }
 }
 
