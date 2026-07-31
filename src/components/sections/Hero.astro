@@ -3,66 +3,84 @@ import UnderlineLinks from '../ui/UnderlineLinks.astro'
 import ParallaxImg from '../ui/ParallaxImg.astro'
 import banner from '../../assets/banner.jpg'
 ---
-<section class="pt-22">
-    <h1 class="_1 text-[14.4cqw] whitespace-nowrap tracking-[-5%] mx-5 mb-[15dvh]">KHARL ALFARO</h1>
+<section class="@container pt-22">
+    <h1 class="hero-title text-[14.4cqw] whitespace-nowrap tracking-[-5%] mx-5 mb-[15dvh]">KHARL ALFARO</h1>
 
-    <div class="grid grid-cols-[1fr_0.5fr_0.5fr] items-end gap-4 mx-8 mb-8">
+    <div class="grid grid-cols-[1fr_0.5fr_auto] items-end gap-4 mx-8 mb-8">
         <div>
-            <p class="_2 eyebrow mb-2">01 — HELLO</p>
-            <p class="_3-lines text-[2rem]">A self-taught developer based in the Philippines. Exploring web design and Front-End by building thoughtful, functional digital experiences.</p>
+            <p class="hero-eyebrow eyebrow mb-2">01 — HELLO</p>
+            <p class="hero-bio text-[2rem]">A self-taught developer based in the Philippines. Exploring web design and Front-End by building thoughtful, functional digital experiences.</p>
         </div>
 
-        <div class="flex gap-2 justify-self-center">
-            <p class="_3-chars eyebrow">KEEP SCROLLING</p>
+        <p class="scroll-hint justify-self-center eyebrow">KEEP SCROLLING ↆ</p> 
 
-            <svg class="w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill="var(--muted)" stroke="var(--muted)" stroke-width="0.75" d="M20,10 L18.607,8.565 L11,16.172 L11,0 L9,0 L9,16.172 L1.414,8.586 L0,10 C3.661,13.661 6.496,16.496 10,20 L20,10" />
-            </svg>     
-        </div>
-
-        <div class="flex flex-col items-end">
+        <div class="flex flex-col items-end hero-links">
             <UnderlineLinks title="GitHub" color="--black" action="https://github.com/Igsaeg" />
             <UnderlineLinks title="kharlfranco26@gmail.com" color="--black" action="mailto:kharlfranco26@gmail.com" />
         </div>
     </div>
 
-    <ParallaxImg src={banner} loading="eager" />
+    <ParallaxImg class="hero-image" src={banner} loading="eager" />
 </section>
 
 <script>
-    import gsap, { createSplit } from '../../scripts/gsap.js';
+    import { gsap, createSplit } from '../../scripts/gsap.js';
 
     document.fonts.ready.then(() => {
         const tl = gsap.timeline();
 
+        const titleSplit = createSplit(document.querySelector('.hero-title'));
+        const eyebrowSplit = createSplit(document.querySelector('.hero-eyebrow'));
+        const bioSplit = createSplit(document.querySelector('.hero-bio'));
+        const scrollSplit = createSplit(document.querySelector('.scroll-hint'));
+        const linksSplit = createSplit(document.querySelector('.hero-links'));
+        const heroImage = document.querySelector('.hero-image .parallax-wrapper');
+        const heroImageWrapper = document.querySelector('.hero-image');
+
+
         tl.addLabel("heroIn")
-        .from(createSplit(document.querySelector('._1')).chars, {
-            yPercent: 100,
-            stagger: 0.1,
+        .from(titleSplit.chars, {
+            yPercent: -100,
+            stagger: 0.04,
             duration: 1,
-            ease: "power3.out",
-            onComplete: () => createSplit(document.querySelector('._1')).revert()
-        }, "heroIn")
-        .from(createSplit(document.querySelector('._2')).chars, {
+            ease: "power4.out",
+            onComplete: () => titleSplit.revert()
+        }, "heroIn+=0.2")
+        .from(eyebrowSplit.chars, {
             yPercent: 100,
             stagger: 0.05,
             duration: 0.5,
-            ease: "power2.out",
-            onComplete: () => createSplit(document.querySelector('._2')).revert()
-        }, "heroIn+=0.8")
-        .from(createSplit(document.querySelector('._3-lines')).lines, {
-            yPercent: 100,
-            stagger: 0.2,
-            duration: 0.6,
             ease: "power3.out",
-            onComplete: () => createSplit(document.querySelector('._3-lines')).revert()
-        }, "heroIn+=1.4")
-        .from(createSplit(document.querySelector('._3-chars')).lines, {
+            onComplete: () => eyebrowSplit.revert()
+        }, "heroIn+=0.8")
+        .from(heroImage, {
+            yPercent: 40,
+            duration: 1.8,
+            ease: "power4.out",
+            force3D: true,
+            onStart: () => heroImageWrapper?.classList.add('hero-entering'),
+            onComplete: () => heroImageWrapper?.classList.remove('hero-entering'),
+        }, "heroIn+=0.9")
+        .from(scrollSplit.chars, {
             yPercent: 100,
             stagger: 0.03,
-            duration: 0.6,
-            ease: "power2.out",
-            onComplete: () => createSplit(document.querySelector('._3-chars')).revert()
-        }, "heroIn+=1.8")
+            duration: 0.5,
+            ease: "power3.out",
+            onComplete: () => scrollSplit.revert()
+        }, "heroIn+=1")
+        .from(bioSplit.lines, {
+            yPercent: 100,
+            stagger: 0.2,
+            duration: 0.9,
+            ease: "power3.out",
+            onComplete: () => bioSplit.revert()
+        }, "heroIn+=1.1")
+        .from(linksSplit.lines, {
+            yPercent: 100,
+            stagger: 0.2,
+            duration: 0.9,
+            ease: "power3.out",
+            onComplete: () => linksSplit.revert()
+        }, "heroIn+=1.25")
     });
 </script>

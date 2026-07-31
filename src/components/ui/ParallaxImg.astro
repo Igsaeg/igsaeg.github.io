@@ -4,12 +4,14 @@ import { Image } from 'astro:assets';
 const { src, class: className, loading: type } = Astro.props
 ---
 <div class={`overflow-hidden ${className}`}>
-    <Image
-        src={src}
-        alt="Banner"
-        class="img block w-full h-auto pointer-events-none select-none"
-        loading={type}
-    />
+    <div class="parallax-wrapper" style="will-change: transform;">
+        <Image
+            src={src}
+            alt="Banner"
+            class="img block w-full h-auto pointer-events-none select-none"
+            loading={type}
+        />
+    </div>
 </div>
 
 <script>
@@ -22,18 +24,26 @@ const { src, class: className, loading: type } = Astro.props
             const rect = img.getBoundingClientRect();
             const isInView = rect.top < viewportHeight && rect.bottom > 0;
 
+            const baseOffset = -50;
+            const parallax = (viewportHeight - rect.top) * 0.075;
+
+            const heroWrapper = img.closest('.hero-image');
+
+            if (heroWrapper?.classList.contains('hero-entering')) {
+                img.style.transform = `translateY(${baseOffset + parallax}px)`;
+                return;
+            }           
+
             if (!isInView) {
                 img.style.transform = 'translateY(0px)';
                 return;
             }
 
-            const baseOffset = -50;
-            const parallax = (viewportHeight - rect.top) * 0.075;
             img.style.transform = `translateY(${baseOffset + parallax}px)`;
         });
-
+        
         requestAnimationFrame(animate);
     }
 
-    requestAnimationFrame(animate);
+    animate();
 </script>

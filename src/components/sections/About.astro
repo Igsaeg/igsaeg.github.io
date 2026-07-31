@@ -3,19 +3,19 @@ import ParallaxImg from '../ui/ParallaxImg.astro'
 import SkillGroup from '../ui/SkillGroup.astro'
 import portrait from '../../assets/portrait.jpg'
 ---
-<section class="flex flex-col gap-48 mx-8 pb-56">
-    <div class="grid grid-cols-[1fr_auto] ">
-        <h1 class="char-fast text-[13rem]">BEHIND THE DESIGN.</h1>
+<section class="flex flex-col mx-8 pb-56">
+    <div class="grid grid-cols-[1fr_auto] mb-64">
+        <h1 class="about-title text-[13rem]">BEHIND THE DESIGN.</h1>
 
         <svg class="w-40 self-end" viewBox="-20.34 24.84 60.72 60.72" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="0">
             <polygon transform="rotate(45, 8.333, 8.333)" points="78.575,33.787 47.444,64.918 47.444,2.124 37.887,2.124 37.887,64.918 6.757,33.787 0,40.543 42.667,83.21 85.333,40.543"/>
         </svg>
     </div>
 
-    <div class="grid grid-cols-[0.75fr_1fr] ">
+    <div class="grid grid-cols-[0.75fr_1fr] mb-32">
         <ParallaxImg src={portrait} class="w-92" loading="lazy"/>
         <div class="flex flex-col gap-24">
-            <h4 class="line-slow">LEARNING NEVER STOPS, AND NEITHER DO I.</h4>
+            <h4 class="about-subtitle">LEARNING NEVER STOPS, AND NEITHER DO I.</h4>
 
             <div class="grid grid-cols-[0.4fr_1fr]">
                 <p class="eyebrow">03 — ABOUT ME</p>
@@ -28,17 +28,47 @@ import portrait from '../../assets/portrait.jpg'
         </div>
     </div>
 
-    <div>
-        <div class="grid grid-cols-[23rem_1fr] mb-24">
-            <p class="char-fast eyebrow">04 — TECH STACK</p>
-            <h2 class="line-slow">TOOLS DON'T BUILD PRODUCTS. PEOPLE DO.</h2>
-        </div>
-
-        <div class="grid grid-cols-4 ml-92">
+    <div class="grid grid-cols-[0.75fr_1fr]">
+        <p class="eyebrow">04 — TECH STACK</p>
+        
+        <div class="grid grid-cols-4">
             <SkillGroup title="LANGUAGES" items={["HTML", "CSS", "JavaScript", "Python"]} />
             <SkillGroup title="FRAMEWORKS" items={["React", "Astro"]} />
-            <SkillGroup title="STYLING" items={["Tailwind"]} />
+            <SkillGroup title="STYLING" items={["Tailwind", "GSAP"]} />
             <SkillGroup title="TOOLS" items={["Git", "GitHub", "Figma", "VS Code"]} />
         </div>
     </div>
 </section>
+
+<script>
+    import { gsap, createSplit, triggerAt } from '../../scripts/gsap.js';
+
+    document.fonts.ready.then(() => {
+        document.querySelectorAll(".about-title").forEach((el) => {
+            gsap.from(createSplit(el).chars, {
+                yPercent: 100,
+                stagger: 0.03,
+                duration: 1.1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: el,
+                    start: triggerAt,
+                },
+                onComplete: () => createSplit(el).revert()
+            });
+        });
+        document.querySelectorAll(".about-subtitle").forEach((el) => {
+            gsap.from(createSplit(el).lines, {
+                yPercent: 100,
+                stagger: 0.2,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: el,
+                    start: triggerAt,
+                },
+                onComplete: () => createSplit(el).revert()
+            });
+        });
+    });
+</script>
