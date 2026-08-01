@@ -1,10 +1,11 @@
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CustomEase } from "gsap/CustomEase";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
-export const triggerAt = "top 65%";
+export const triggerAt = "top 70%";
 
 export function createSplit(el) {
     return new SplitText(el, {
@@ -13,4 +14,4 @@ export function createSplit(el) {
     });
 }
 
-export { gsap };
+export { gsap, CustomEase };

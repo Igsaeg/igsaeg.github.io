@@ -3,34 +3,37 @@ import UnderlineLinks from "../ui/UnderlineLinks.astro"
 import List from '../ui/List.astro'
 ---
 <section class="bg-(--black) text-(--off-white) pt-12 pb-8">
-    <div class="grid grid-cols-[1fr_1fr] mx-8 mb-40">
+    <div class="grid grid-cols-[50vw_auto] mx-8 mb-40">
         <div>
-            <h3 class="text-[4rem] text-inherit mb-4">IGSAEG</h3>
-            <p class="text-inherit mr-[12%]">A developer exploring minimalist design through thoughtful and functional web experiences.</p>
+            <h3 class="text-[4.25rem] text-inherit mb-4">IGSAEG</h3>
+            <p class="text-inherit">A developer exploring minimalist design through thoughtful and functional web experiences.</p>
         </div>
 
-        <div class="grid grid-cols-[repeat(2,minmax(0,1fr))_auto]">
-            <div class="flex flex-col gap-8">
-                <List title="AVAILABILITY" items={["Ready for Work"]} bg="dark" />
-                <List title="TIME" items={["17:14"]} bg="dark" />
+        <div class="grid grid-cols-2 justify-self-end gap-x-20 gap-y-10">
+            <div>
+                <p class="eyebrow mb-2">INSPIRED BY</p>
+                <div class="flex flex-col gap-1">
+                    <UnderlineLinks title="OBSCURA" bg="dark" action="https://obscurastudio.webflow.io" />
+                    <UnderlineLinks title="Floyd_Miles" bg="dark" action="https://fmportfolio.framer.website" />
+                </div>
             </div>
 
             <div>
-                <p class="eyebrow mb-5">FIND ME</p>
+                <p class="eyebrow mb-2">FIND ME</p>
                 <div class="flex flex-col gap-1">
                     <UnderlineLinks title="GitHub" bg="dark" action="https://github.com/Igsaeg" />
-                    <UnderlineLinks title="kharlfranco26@gmail.com" bg="dark" action="mailto:kharlfranco26@gmail.com" />
+                    <UnderlineLinks title="Gmail" bg="dark" action="mailto:kharlfranco26@gmail.com" />
                 </div>
             </div>
+
+            <List title="BUILT WITH" items={["Astro"]} bg="dark" />
+
+            <List title="TIME" items={["23:30"]} bg="dark" />
         </div>
     </div>
 
     <div>
         <h1 class="text-[14.4cqw] text-inherit whitespace-nowrap tracking-[-5%] mx-5 mb-1">KHARL ALFARO</h1>
-
-        <div class="flex justify-between text-(--muted) mx-8 ">
-            <p class="text-[1.5rem] text-inherit">©2026 KHARL FRANCO ALFARO</p>
-            <p class="text-[1.5rem] text-inherit">Built with Astro</p>
-        </div>
+        <p class="text-[1.5rem] text-(--muted) ml-8">©2026 KHARL FRANCO ALFARO</p>
     </div>
 </section>

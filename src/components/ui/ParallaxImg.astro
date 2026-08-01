@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 
 const { src, class: className, loading: type } = Astro.props
 ---
-<div class={`overflow-hidden ${className}`}>
+<div class={`overflow-hidden ${className} rounded-sm`}>
     <div class="parallax-wrapper" style="will-change: transform;">
         <Image
             src={src}
