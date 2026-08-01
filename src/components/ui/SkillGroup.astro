@@ -1,9 +1,0 @@
----
-const { title, items } = Astro.props as { title: string; items: string[] };
----
-<div>
-    <p class="eyebrow mb-4">{title}</p>
-    <ul class="flex flex-col gap-1">
-        {items.map((item) => <li><p>{item}</p></li>)}
-    </ul>
-</div>

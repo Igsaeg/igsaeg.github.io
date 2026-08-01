@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
-export const triggerAt = "top 70%";
+export const triggerAt = "top 65%";
 
 export function createSplit(el) {
     return new SplitText(el, {

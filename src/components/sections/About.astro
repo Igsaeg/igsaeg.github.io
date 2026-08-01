@@ -1,28 +1,29 @@
 ---
 import ParallaxImg from '../ui/ParallaxImg.astro'
-import SkillGroup from '../ui/SkillGroup.astro'
+import List from '../ui/List.astro'
 import portrait from '../../assets/portrait.jpg'
 ---
-<section class="flex flex-col mx-8 pb-56">
-    <div class="grid grid-cols-[1fr_auto] mb-64">
-        <h1 class="about-title text-[13rem]">BEHIND THE DESIGN.</h1>
+<section class="flex flex-col mx-8 pb-64">
+    <div class="grid grid-cols-[1fr_auto] mb-52">
+        <h1 class="about-title text-[11rem]">BEHIND THE SCREEN.</h1>
 
-        <svg class="w-40 self-end" viewBox="-20.34 24.84 60.72 60.72" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="0">
+        <svg class="h-[40%] self-end" viewBox="-20.34 24.84 60.72 60.72" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="0">
             <polygon transform="rotate(45, 8.333, 8.333)" points="78.575,33.787 47.444,64.918 47.444,2.124 37.887,2.124 37.887,64.918 6.757,33.787 0,40.543 42.667,83.21 85.333,40.543"/>
         </svg>
     </div>
 
     <div class="grid grid-cols-[0.75fr_1fr] mb-32">
-        <ParallaxImg src={portrait} class="w-92" loading="lazy"/>
-        <div class="flex flex-col gap-24">
-            <h4 class="about-subtitle">LEARNING NEVER STOPS, AND NEITHER DO I.</h4>
+        <ParallaxImg src={portrait} class="about-image w-92" loading="lazy"/>
+        
+        <div class="flex flex-col justify-between">
+            <h2 class="about-subtitle text-[5rem]">LEARNING NEVER STOPS, NEITHER DO I.</h2>
 
             <div class="grid grid-cols-[0.4fr_1fr]">
-                <p class="eyebrow">03 — ABOUT ME</p>
+                <p class="about-text eyebrow">03 — ABOUT ME</p>
 
                 <div class="flex flex-col gap-8 mr-[16%]">
-                    <p class="text-[1.5rem]">Hi! I'm Kharl, a 20 year old developer based in the Philippines. I focus on Front-End and UI/UX Design.</p>
-                    <p class="text-[1.5rem]">I dedicate my time learning new things and improving my skills. I build my projects while exploring new concepts and technologies.</p>
+                    <p class="about-text text-[1.5rem]">Hi! I'm Kharl, a 20 year old developer based in the Philippines. I focus on Front-End and UI/UX Design.</p>
+                    <p class="about-text text-[1.5rem]">I dedicate my time learning new things and improving my skills. I build my projects while exploring new concepts and technologies.</p>
                 </div>
             </div>
         </div>
@@ -32,10 +33,10 @@ import portrait from '../../assets/portrait.jpg'
         <p class="eyebrow">04 — TECH STACK</p>
         
         <div class="grid grid-cols-4">
-            <SkillGroup title="LANGUAGES" items={["HTML", "CSS", "JavaScript", "Python"]} />
-            <SkillGroup title="FRAMEWORKS" items={["React", "Astro"]} />
-            <SkillGroup title="STYLING" items={["Tailwind", "GSAP"]} />
-            <SkillGroup title="TOOLS" items={["Git", "GitHub", "Figma", "VS Code"]} />
+            <List title="LANGUAGES" items={["HTML", "CSS", "JavaScript", "Python"]} />
+            <List title="FRAMEWORKS" items={["React", "Astro"]} />
+            <List title="STYLING" items={["Tailwind", "GSAP"]} />
+            <List title="TOOLS" items={["Git", "GitHub", "Figma", "VS Code"]} />
         </div>
     </div>
 </section>
@@ -44,31 +45,55 @@ import portrait from '../../assets/portrait.jpg'
     import { gsap, createSplit, triggerAt } from '../../scripts/gsap.js';
 
     document.fonts.ready.then(() => {
-        document.querySelectorAll(".about-title").forEach((el) => {
-            gsap.from(createSplit(el).chars, {
-                yPercent: 100,
-                stagger: 0.03,
-                duration: 1.1,
+        const titleSplit = document.querySelector(".about-title");
+        const subtitleSplit = document.querySelector(".about-subtitle");
+        const textSplit = document.querySelectorAll(".about-text");
+        const aboutImage = document.querySelector(".about-image") as HTMLElement;
+
+        gsap.from(createSplit(titleSplit).chars, {
+            yPercent: 100,
+            stagger: 0.04,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: titleSplit,
+                start: triggerAt,
+            },
+            onComplete: () => createSplit(titleSplit).revert()
+        });
+
+        gsap.from(createSplit(subtitleSplit).lines, {
+            yPercent: 100,
+            stagger: 0.2,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: subtitleSplit,
+                start: triggerAt,
+            },
+            onComplete: () => createSplit(subtitleSplit).revert()
+        });
+
+        textSplit.forEach((el) => {
+            gsap.from(el, {
+                opacity: 0,
+                duration: 1.2,
                 ease: "power3.out",
                 scrollTrigger: {
-                    trigger: el,
+                    trigger: subtitleSplit,
                     start: triggerAt,
-                },
-                onComplete: () => createSplit(el).revert()
-            });
-        });
-        document.querySelectorAll(".about-subtitle").forEach((el) => {
-            gsap.from(createSplit(el).lines, {
-                yPercent: 100,
-                stagger: 0.2,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: el,
-                    start: triggerAt,
-                },
-                onComplete: () => createSplit(el).revert()
-            });
-        });
+                }
+            })
+        })
+
+        gsap.from(aboutImage, {
+            clipPath: "inset(0 0 100% 0)",
+            duration: 0.6,
+            ease: "power2.in",
+            scrollTrigger: {
+                trigger: aboutImage,
+                start: triggerAt,
+            }
+        })
     });
 </script>

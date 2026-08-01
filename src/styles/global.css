@@ -31,7 +31,7 @@
 
     --transition: 0.2s ease;
     --transition-slow: 0.35s ease;
-    --transition-underline: 0.45s;
+    --transition-underline: 0.5s;
 }
 
 ::selection {
@@ -63,12 +63,9 @@ body {
     h2, h3, h4 { line-height: 1; }
 
     h1 { line-height: 0.9; }
-    h2 { font-size: 5.75rem; }
-    h3 { font-size: 5rem; }
-    h4 { font-size: 4.25rem; }
 
     p {
-        font-size: 1.75rem;
+        font-size: 2rem;
         line-height: 1.2;
     }
     a {

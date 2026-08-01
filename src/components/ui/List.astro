@@ -1,0 +1,10 @@
+---
+const { title, items, bg } = Astro.props as { title: string; items: string[]; bg: string };
+const color = (bg == "dark") ? "--off-white" : "--black";
+---
+<div>
+    <p class="eyebrow mb-2">{title}</p>
+    <ul class="flex flex-col gap-1">
+        {items.map((item) => <li><p class={`text-(${color})`}>{item}</p></li>)}
+    </ul>
+</div>

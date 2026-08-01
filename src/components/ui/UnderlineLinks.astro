@@ -1,11 +1,12 @@
 ---
-const { title, size, color, action } = Astro.props;
+const { title, size, bg, action } = Astro.props;
+const color = (bg == "dark") ? "--off-white" : "--black";
 ---
 <a href={action} class="group relative inline-flex w-fit">
     <p style={
-        `font-size: ${size ?? "2rem"};
+        `font-size: ${size ?? ""};
         color: var(${color});
-        ${size && size !== "2rem" ? " line-height: 1.4;" : ""}
+        ${size && size !== "" ? " line-height: 1.4;" : ""}
         `}
     >{title}</p>
     <span class={`absolute bottom-0 bg-(${color}) w-0 h-0.75 [transition:var(--transition-underline)] group-hover:w-full`}></span>
