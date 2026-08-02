@@ -12,10 +12,10 @@ import clickerGame from "../../assets/clicker-game.png";
     </div>
 
     <div>
-        <WorksItem index="01" title="REWIND" slug="rewind" year="2026" desc="Digital Gallery" href="https://igsaeg.github.io/rewind" />
-        <WorksItem index="02" title="BILLS CREDIT CARD" slug="bcc" year="2023" desc="Spending Game" href="https://igsaeg.github.io/bills-credit-card" />
-        <WorksItem index="03" title="TYPING GAME" slug="typing-game" year="2023" desc="Typing Practice" href="https://igsaeg.github.io/typing-game" />
-        <WorksItem index="04" title="CLICKER GAME" slug="clicker-game" year="2023" desc="Clicker Game" href="https://igsaeg.github.io/clicker-game" />
+        <WorksItem index="01" title="REWIND" slug="rewind" year="2026" desc="Digital Gallery" href="https://igsaeg.github.io/rewind" previewSrc={rewind.src} />
+        <WorksItem index="02" title="BILLS CREDIT CARD" slug="bcc" year="2023" desc="Spending Game" href="https://igsaeg.github.io/bills-credit-card" previewSrc={billsCreditCard.src} />
+        <WorksItem index="03" title="TYPING GAME" slug="typing-game" year="2023" desc="Typing Practice" href="https://igsaeg.github.io/typing-game" previewSrc={typingGame.src} />
+        <WorksItem index="04" title="CLICKER GAME" slug="clicker-game" year="2023" desc="Clicker Game" href="https://igsaeg.github.io/clicker-game" previewSrc={clickerGame.src} />
 
         <div class="border-t-2 border-t-(--faint)"></div>
 
@@ -27,89 +27,49 @@ import clickerGame from "../../assets/clicker-game.png";
     <img
         class="item__preview fixed left-0 top-0 w-76 pointer-events-none opacity-0 [transition:opacity_var(--transition-slow)] rounded-md"
         src={rewind.src}
-        data-rewind={rewind.src}
-        data-bcc={billsCreditCard.src}
-        data-typing={typingGame.src}
-        data-clicker={clickerGame.src}
         alt=""
     />
 </section>
 
 <script>
-    const works = document.querySelectorAll(".item:not(.item__last)");
+    import { revealText } from '../../scripts/gsap.js';
+
+    const works = document.querySelectorAll<HTMLElement>(".item:not(.item__last)");
     const preview = document.querySelector(".item__preview") as HTMLImageElement;
 
-    const classToData = {
-        "item__rewind": preview.dataset.rewind,
-        "item__bcc": preview.dataset.bcc,
-        "item__typing-game": preview.dataset.typing,
-        "item__clicker-game": preview.dataset.clicker
-    };
+    let x = 0, y = 0, mouseX = 0, mouseY = 0;
+    let rafId: number | null = null;
 
-    works.forEach(work => {
+    function animate() {
+        x += (mouseX - x) * 0.15;
+        y += (mouseY - y) * 0.15;
+        preview.style.transform = `translate(${x + 8}px, ${y}px)`;
+        rafId = requestAnimationFrame(animate);
+    }
+
+    works.forEach((work) => {
         work.addEventListener("mouseenter", () => {
-            const classList = [...work.classList];
-            for (const [cls, src] of Object.entries(classToData)) {
-                if (classList.includes(cls)) {
-                    if (src) preview.src = src;
-                    break;
-                }
-            }
+            if (work.dataset.preview) preview.src = work.dataset.preview;
             preview.style.opacity = "1";
+            if (!rafId) animate();
         });
+
         work.addEventListener("mouseleave", () => {
             preview.style.opacity = "0";
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
         });
-    });    
-
-    let x = 0, y = 0, mouseX = 0, mouseY = 0;
+    });
 
     window.addEventListener("mousemove", (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
     });
 
-    function animate() {
-        x += (mouseX - x) * 0.15;
-        y += (mouseY - y) * 0.15;
-
-        preview.style.transform = `translate(${x+8}px, ${y}px)`;
-
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    // GSAP Animations
-
-    import { gsap, createSplit, triggerAt } from '../../scripts/gsap.js';
-
     document.fonts.ready.then(() => {
-        document.querySelectorAll(".works-title").forEach((el) => {
-            gsap.from(createSplit(el).chars, {
-                yPercent: 100,
-                stagger: 0.02,
-                duration: 0.9,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: el,
-                    start: triggerAt,
-                },
-                onComplete: () => createSplit(el).revert()
-            });
-        });
-        document.querySelectorAll(".works-desc").forEach((el) => {
-            gsap.from(createSplit(el).lines, {
-                yPercent: 100,
-                stagger: 0.1,
-                duration: 0.8,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: el,
-                    start: triggerAt,
-                },
-                onComplete: () => createSplit(el).revert()
-            });
-        });
+        revealText(document.querySelector(".works-title"), { type: "chars", stagger: 0.02, duration: 0.9 } as any);
+        revealText(document.querySelector(".works-desc"), { type: "lines", stagger: 0.2, duration: 0.9 } as any);
     });
 </script>

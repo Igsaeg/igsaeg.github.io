@@ -6,14 +6,17 @@
 <script>
     const cursor = document.getElementById('cursor') as HTMLElement;
 
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.opacity = '1';
-        cursor.style.visibility = 'visible';
-        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-    });
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.opacity = '1';
+            cursor.style.visibility = 'visible';
+            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+        });
 
-    document.addEventListener('mouseleave', () => {
-        cursor.style.opacity = '0';
-        cursor.style.visibility = 'hidden';
-    });
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+            cursor.style.visibility = 'hidden';
+        })  
+    }
+   ;
 </script>

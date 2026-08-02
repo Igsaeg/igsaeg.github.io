@@ -29,7 +29,6 @@
     --muted: #777777;
     --black: #111111;
 
-    --transition: 0.2s ease;
     --transition-slow: 0.35s ease;
     --transition-underline: 0.45s;
 }
@@ -41,18 +40,15 @@
 
 ::-webkit-scrollbar { display: none; }
 
-html {
-    scroll-behavior: smooth;
-}
-
-* {
-    box-sizing: border-box;
-    cursor: none !important;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
     background-color: var(--bg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    * { cursor: none !important; }
 }
 
 @layer base {
@@ -82,14 +78,5 @@ body {
         font-weight: 600;
         color: var(--muted);
         padding-top: 1fr;
-    }
-}
-
-@keyframes moveUp {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-13rem);
     }
 }

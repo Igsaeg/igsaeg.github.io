@@ -42,38 +42,14 @@ import portrait from '../../assets/portrait.jpg'
 </section>
 
 <script>
-    import { gsap, createSplit, triggerAt, CustomEase } from '../../scripts/gsap.js';
+    import { gsap,  CustomEase, revealText, triggerAt  } from '../../scripts/gsap.js';
 
     document.fonts.ready.then(() => {
-        const titleSplit = document.querySelector(".about-title");
-        const subtitleSplit = document.querySelector(".about-subtitle");
         const textSplit = document.querySelectorAll(".about-text");
         const aboutImage = document.querySelector(".about-image") as HTMLElement;
-        const listSplit = document.querySelectorAll(".about-list");
 
-        gsap.from(createSplit(titleSplit).chars, {
-            yPercent: 100,
-            stagger: 0.04,
-            duration: 0.9,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: titleSplit,
-                start: "top 65%",
-            },
-            onComplete: () => createSplit(titleSplit).revert()
-        });
-
-        gsap.from(createSplit(subtitleSplit).lines, {
-            yPercent: 100,
-            stagger: 0.3,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: subtitleSplit,
-                start: triggerAt,
-            },
-            onComplete: () => createSplit(subtitleSplit).revert()
-        });
+        revealText(document.querySelector(".about-title"), { type: "chars", stagger: 0.04, duration: 0.8 } as any);
+        revealText(document.querySelector(".about-subtitle"), { type: "lines", stagger: 0.3, duration: 0.8 } as any);
 
         textSplit.forEach((el) => {
             gsap.from(el, {
@@ -82,7 +58,7 @@ import portrait from '../../assets/portrait.jpg'
                 duration: 1.1,
                 ease: "power4.out",
                 scrollTrigger: {
-                    trigger: subtitleSplit,
+                    trigger: document.querySelector(".about-subtitle"),
                     start: triggerAt,
                 }
             })
@@ -96,19 +72,6 @@ import portrait from '../../assets/portrait.jpg'
                 trigger: aboutImage,
                 start: triggerAt,
             }
-        })
-
-        listSplit.forEach((el) => {
-            gsap.from(createSplit(el).lines, {
-                yPercent: 100,
-                stagger: 0.1,
-                duration: 0.8,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: el,
-                    start: triggerAt,
-                }
-            })
         })
     });
 </script>

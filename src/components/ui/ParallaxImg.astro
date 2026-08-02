@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 
-const { src, class: className, loading: type } = Astro.props
+const { src, class: className, loading } = Astro.props
 ---
 <div class={`overflow-hidden ${className} rounded-md`}>
     <div class="parallax-wrapper" style="will-change: transform;">
@@ -9,7 +9,7 @@ const { src, class: className, loading: type } = Astro.props
             src={src}
             alt="Banner"
             class="img block w-full h-auto pointer-events-none select-none rounded-md"
-            loading={type}
+            loading={loading}
         />
     </div>
 </div>
@@ -17,33 +17,18 @@ const { src, class: className, loading: type } = Astro.props
 <script>
     const img = document.querySelectorAll(".img") as NodeListOf<HTMLElement>;
 
-    function animate() {
+    function update() {
         const viewportHeight = window.innerHeight;
-
         img.forEach((img) => {
             const rect = img.getBoundingClientRect();
-            const isInView = rect.top < viewportHeight && rect.bottom > 0;
-
-            const baseOffset = -50;
+            if (rect.top >= viewportHeight || rect.bottom <= 0) return;
             const parallax = (viewportHeight - rect.top) * 0.075;
-
-            const heroWrapper = img.closest('.hero-image');
-
-            if (heroWrapper?.classList.contains('hero-entering')) {
-                img.style.transform = `translateY(${baseOffset + parallax}px)`;
-                return;
-            }           
-
-            if (!isInView) {
-                img.style.transform = 'translateY(0px)';
-                return;
-            }
-
-            img.style.transform = `translateY(${baseOffset + parallax}px)`;
+            img.style.transform = `translateY(${-50 + parallax}px)`;
         });
-        
-        requestAnimationFrame(animate);
     }
 
-    animate();
+    const lenis = (window as any).lenis;
+    lenis?.on?.('scroll', update) ?? window.addEventListener('scroll', update);
+    
+    update();
 </script>
