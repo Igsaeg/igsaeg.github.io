@@ -26,12 +26,12 @@
     --bg: #fff;
     --off-white: #eee;
     --faint: #ccc;
-    --muted: #6d6d6d;
+    --muted: #777777;
     --black: #111111;
 
     --transition: 0.2s ease;
     --transition-slow: 0.35s ease;
-    --transition-underline: 0.5s;
+    --transition-underline: 0.45s;
 }
 
 ::selection {
@@ -39,12 +39,16 @@
     color: var(--off-white);
 }
 
+::-webkit-scrollbar { display: none; }
+
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     box-sizing: border-box;
     cursor: none !important;
 }
-
-::-webkit-scrollbar { display: none; }
 
 body {
     margin: 0;

@@ -5,10 +5,10 @@ import billsCreditCard from "../../assets/bills-credit-card.png";
 import typingGame from "../../assets/typing-game.png";
 import clickerGame from "../../assets/clicker-game.png";
 ---
-<section class="flex flex-col gap-40 pt-8 pb-80">
+<section id="works" class="flex flex-col gap-40 pt-8 pb-80">
     <div class="grid grid-cols-[1fr_auto] mx-8">
         <h2 class="works-title text-[6rem]">EVERY PROJECT, A STEP FORWARD.</h2>
-        <p class="eyebrow justify-self-end self-end">02 — SELECTED WORK</p>
+        <p class="eyebrow justify-self-end self-end">02. SELECTED WORK</p>
     </div>
 
     <div>
@@ -25,7 +25,7 @@ import clickerGame from "../../assets/clicker-game.png";
     </div>
 
     <img
-        class="item__preview fixed left-0 top-0 w-76 pointer-events-none opacity-0 [transition:opacity_var(--transition-slow)]"
+        class="item__preview fixed left-0 top-0 w-76 pointer-events-none opacity-0 [transition:opacity_var(--transition-slow)] rounded-md"
         src={rewind.src}
         data-rewind={rewind.src}
         data-bcc={billsCreditCard.src}
@@ -70,8 +70,8 @@ import clickerGame from "../../assets/clicker-game.png";
     });
 
     function animate() {
-        x += (mouseX - x) * 0.2;
-        y += (mouseY - y) * 0.2;
+        x += (mouseX - x) * 0.15;
+        y += (mouseY - y) * 0.15;
 
         preview.style.transform = `translate(${x+8}px, ${y}px)`;
 

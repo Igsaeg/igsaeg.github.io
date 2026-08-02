@@ -3,7 +3,7 @@ import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CustomEase } from "gsap/CustomEase";
 
-gsap.registerPlugin(SplitText, ScrollTrigger);
+gsap.registerPlugin(SplitText, ScrollTrigger, CustomEase);
 
 export const triggerAt = "top 70%";
 

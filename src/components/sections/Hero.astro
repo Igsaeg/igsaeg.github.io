@@ -3,12 +3,12 @@ import UnderlineLinks from '../ui/UnderlineLinks.astro'
 import ParallaxImg from '../ui/ParallaxImg.astro'
 import banner from '../../assets/banner.jpg'
 ---
-<section class="@container pt-22">
+<section id="home" class="@container pt-22">
     <h1 class="hero-title text-[14.4cqw] whitespace-nowrap tracking-[-5%] mx-5 mb-[15dvh]">KHARL ALFARO</h1>
 
     <div class="grid grid-cols-[1fr_0.5fr_auto] items-end gap-4 mx-8 mb-8">
         <div>
-            <p class="hero-eyebrow eyebrow mb-2">01 — HELLO</p>
+            <p class="hero-eyebrow eyebrow mb-2">01. HELLO</p>
             <p class="hero-bio">A self-taught developer based in the Philippines. Exploring web design and Front-End by building thoughtful, functional digital experiences.</p>
         </div>
 
@@ -41,46 +41,46 @@ import banner from '../../assets/banner.jpg'
         tl.addLabel("heroIn")
         .from(titleSplit.chars, {
             yPercent: -100,
-            stagger: 0.04,
-            duration: 1,
+            stagger: 0.05,
+            duration: 1.2,
             ease: "power4.out",
             onComplete: () => titleSplit.revert()
         }, "heroIn+=0.2")
         .from(eyebrowSplit.chars, {
             yPercent: 100,
             stagger: 0.05,
-            duration: 0.5,
+            duration: 0.6,
             ease: "power3.out",
             onComplete: () => eyebrowSplit.revert()
-        }, "heroIn+=0.8")
+        }, "heroIn+=0.75")
         .from(heroImage, {
             yPercent: 40,
-            duration: 1.5,
-            ease: "power4.out",
+            duration: 1.4,
+            ease: "power3.out",
             force3D: true,
             onStart: () => heroImageWrapper?.classList.add('hero-entering'),
             onComplete: () => heroImageWrapper?.classList.remove('hero-entering'),
         }, "heroIn+=0.9")
-        .from(scrollSplit.chars, {
-            yPercent: 100,
-            stagger: 0.03,
-            duration: 0.5,
-            ease: "power3.out",
-            onComplete: () => scrollSplit.revert()
-        }, "heroIn+=1")
         .from(bioSplit.lines, {
             yPercent: 100,
             stagger: 0.1,
             duration: 0.8,
             ease: "power3.out",
             onComplete: () => bioSplit.revert()
-        }, "heroIn+=1.1")
+        }, "heroIn+=1")
         .from(linksSplit.lines, {
             yPercent: 100,
             stagger: 0.1,
-            duration: 0.8,
+            duration: 0.7,
             ease: "power3.out",
             onComplete: () => linksSplit.revert()
-        }, "heroIn+=1.2")
+        }, "heroIn+=1.15")
+        .from(scrollSplit.lines, {
+            yPercent: 100,
+            stagger: 0.1,
+            duration: 0.7,
+            ease: "power3.out",
+            onComplete: () => scrollSplit.revert()
+        }, "heroIn+=1.25")
     });
 </script>

@@ -1,13 +1,32 @@
 ---
-const { title, size, bg, action } = Astro.props;
-const color = (bg == "dark") ? "--off-white" : "--black";
+const { title, size, bg, type = "href", action } = Astro.props;
+const color = (bg === "dark") ? "--off-white" : "--black";
+
+const isFunc = type === "func";
+let onclickValue;
+
+if (isFunc) {
+    onclickValue = `
+        event.preventDefault();
+        if (window.lenis?.scrollTo) {
+            window.lenis.scrollTo('${action}', {
+                duration: 1.5,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                offset: -160,                          
+            })
+        } 
+        else {
+            const el = document.querySelector('${action}');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+    `;
+}   
 ---
-<a href={action} class="group relative inline-flex w-fit">
-    <p style={
-        `font-size: ${size ?? ""};
-        color: var(${color});
-        ${size && size !== "" ? " line-height: 1.4;" : ""}
-        `}
-    >{title}</p>
-    <span class={`absolute bottom-0 bg-(${color}) w-0 h-0.75 [transition:var(--transition-underline)] group-hover:w-full`}></span>
+<a href={isFunc ? undefined : action} class="group relative inline-block w-fit" onclick={onclickValue}>
+    <p style={`font-size: ${size ?? ""}; color: var(${color});`}>{title}</p>
+
+    <span 
+        style={`background-color: var(${color});`}
+        class="absolute left-0 -bottom-0.5 h-0.75 w-full origin-left scale-x-0 transition-transform [transition:var(--transition-underline)] ease-out group-hover:scale-x-100"
+    ></span>
 </a>
