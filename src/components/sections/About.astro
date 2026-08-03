@@ -1,10 +1,11 @@
 ---
 import ParallaxImg from '../ui/ParallaxImg.astro'
+import UnderlineLinks from "../ui/UnderlineLinks.astro"
 import List from '../ui/List.astro'
 import portrait from '../../assets/portrait.jpg'
 ---
-<section id="about" class="flex flex-col mx-8 pb-64">
-    <div class="grid grid-cols-[1fr_auto] mb-52">
+<section id="about" class="flex flex-col mx-8 pb-60">
+    <div class="grid grid-cols-[1fr_auto] mb-60">
         <h1 class="about-title text-[11rem]">BEHIND THE SCREEN.</h1>
 
         <svg class="h-[40%] self-end" viewBox="-20.34 24.84 60.72 60.72" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="0">
@@ -12,8 +13,8 @@ import portrait from '../../assets/portrait.jpg'
         </svg>
     </div>
 
-    <div class="grid grid-cols-[0.75fr_1fr] mb-32">
-        <ParallaxImg src={portrait} class="about-image w-92" loading="lazy"/>
+    <div class="grid grid-cols-[0.75fr_1fr] mb-40">
+        <ParallaxImg class="about-image w-92" src={portrait} alt="Portrait of Shorekeeper" loading="lazy"/>
         
         <div class="flex flex-col justify-between">
             <h2 class="about-subtitle text-[5rem]">LEARNING NEVER STOPS, NEITHER DO I.</h2>
@@ -24,38 +25,42 @@ import portrait from '../../assets/portrait.jpg'
                 <div class="flex flex-col gap-8 mr-[16%]">
                     <p class="about-text text-[1.5rem]">Hi! I'm Kharl, a 20 year old developer based in the Philippines. I focus on Front-End and Web Design.</p>
                     <p class="about-text text-[1.5rem]">I dedicate my time learning new things and improving my skills. I build my projects while exploring new concepts and technologies.</p>
+                    <UnderlineLinks title="Learn more" type="link" where="https://github.com/Igsaeg" size="1.5rem" />
                 </div>
             </div>
         </div>
     </div>
 
     <div class="grid grid-cols-[0.75fr_1fr]">
-        <p class="eyebrow">04. TECH STACK</p>
+        <div class="mr-[24%]">
+            <p class="eyebrow mb-2">04. TECH STACK</p>
+            <p>Tools don't build products. People do.</p>
+        </div>
         
         <div class="grid grid-cols-4">
             <List title="LANGUAGES" items={["HTML", "CSS", "JavaScript", "Python"]} />
             <List title="FRAMEWORKS" items={["React", "Astro"]} />
-            <List title="STYLING" items={["Tailwind", "GSAP"]} />
+            <List title="DESIGN" items={["Tailwind", "GSAP"]} />
             <List title="TOOLS" items={["Git", "GitHub", "Figma", "VS Code"]} />
         </div>
     </div>
 </section>
 
 <script>
-    import { gsap,  CustomEase, revealText, triggerAt  } from '../../scripts/gsap.js';
+    import { gsap, CustomEase, revealText, triggerAt  } from '../../scripts/gsap.js';
 
     document.fonts.ready.then(() => {
         const textSplit = document.querySelectorAll(".about-text");
         const aboutImage = document.querySelector(".about-image") as HTMLElement;
 
         revealText(document.querySelector(".about-title"), { type: "chars", stagger: 0.04, duration: 0.8 } as any);
-        revealText(document.querySelector(".about-subtitle"), { type: "lines", stagger: 0.3, duration: 0.8 } as any);
+        revealText(document.querySelector(".about-subtitle"), { type: "lines", stagger: 0.25, duration: 0.9 } as any);
 
         textSplit.forEach((el) => {
             gsap.from(el, {
                 delay: 0.5,
                 opacity: 0,
-                duration: 1.1,
+                duration: 1.2,
                 ease: "power4.out",
                 scrollTrigger: {
                     trigger: document.querySelector(".about-subtitle"),
@@ -66,8 +71,8 @@ import portrait from '../../assets/portrait.jpg'
 
         gsap.from(aboutImage, {
             clipPath: "inset(0 0 100% 0)",
-            duration: 0.9,
-            ease: CustomEase.create("custom", "M0,0 C0.8,0 0.6,1 1,1 "),
+            duration: 0.8,
+            ease: CustomEase.create("custom", "M0,0 C0.8,0 0.5,1 1,1 "),
             scrollTrigger: {
                 trigger: aboutImage,
                 start: triggerAt,

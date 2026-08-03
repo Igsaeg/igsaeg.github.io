@@ -1,4 +1,13 @@
 ---
+interface Props {
+    index: string;
+    title: string;
+    slug: string;
+    year: string;
+    desc: string;
+    href: string;
+    previewSrc: string;
+}
 const { index, title, slug, year, desc, href, previewSrc } = Astro.props;
 ---
 <div class="border-t-2 border-t-(--faint)"></div>

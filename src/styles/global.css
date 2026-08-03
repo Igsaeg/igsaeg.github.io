@@ -30,7 +30,6 @@
     --black: #111111;
 
     --transition-slow: 0.35s ease;
-    --transition-underline: 0.45s;
 }
 
 ::selection {
@@ -48,7 +47,7 @@ body {
 }
 
 @media (hover: hover) and (pointer: fine) {
-    * { cursor: none !important; }
+    * { cursor: none; }
 }
 
 @layer base {
@@ -77,6 +76,24 @@ body {
         font-size: 1.25rem;
         font-weight: 600;
         color: var(--muted);
-        padding-top: 1fr;
+    }
+}
+
+@keyframes underline {
+    0% {
+        transform-origin: right;
+        transform: scaleX(1);
+    }
+    40% {
+        transform-origin: right;
+        transform: scaleX(0);
+    }
+    40.01% {
+        transform-origin: left;
+        transform: scaleX(0);
+    }
+    90% {
+        transform-origin: left;
+        transform: scaleX(1);
     }
 }

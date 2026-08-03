@@ -2,7 +2,7 @@
 import UnderlineLinks from "../ui/UnderlineLinks.astro"
 import List from '../ui/List.astro'
 ---
-<section class="bg-(--black) text-(--off-white) pt-12 pb-6">
+<footer class="bg-(--black) text-(--off-white) pt-12 pb-6">
     <div class="grid grid-cols-[50vw_auto] mx-8 mb-40">
         <div>
             <h3 class="text-[4.25rem] text-inherit mb-4">IGSAEG</h3>
@@ -13,27 +13,21 @@ import List from '../ui/List.astro'
             <div>
                 <p class="eyebrow mb-2">INSPIRED BY</p>
                 <div class="flex flex-col gap-1">
-                    <UnderlineLinks title="OBSCURA" action="https://obscurastudio.webflow.io" bg="dark" />
-                    <UnderlineLinks title="Floyd Miles" action="https://fmportfolio.framer.website" bg="dark" />
+                    <UnderlineLinks title="OBSCURA" type="link" where="https://obscurastudio.webflow.io" dark={true} />
+                    <UnderlineLinks title="Floyd Miles" type="link" where="https://fmportfolio.framer.website" dark={true} />
                 </div>
             </div>
 
             <div>
                 <p class="eyebrow mb-2">FIND ME</p>
                 <div class="flex flex-col gap-1">
-                    <UnderlineLinks title="GitHub" action="https://github.com/Igsaeg" bg="dark" />
-                    <UnderlineLinks title="Mail" action="mailto:kharlfranco26@gmail.com" bg="dark" />
+                    <UnderlineLinks title="GitHub" type="link" where="https://github.com/Igsaeg" dark={true} />
+                    <UnderlineLinks title="Mail" type="link" where="mailto:kharlfranco26@gmail.com" dark={true} />
                 </div>
             </div>
 
-            <List title="BUILT WITH" items={["Astro"]} bg="dark" />
-
-            <div>
-                <p class="eyebrow mb-2">MY TIME</p>
-                <ul class="flex flex-col gap-1">
-                    <li><p class="text-(--off-white)" id="site-time"></p></li>
-                </ul>
-            </div>
+            <List title="BUILT WITH" items={["Astro"]} dark={true} />
+            <List title="MY TIME" items={["Astro"]} dark={true} class="asd" />
         </div>
     </div>
 
@@ -51,7 +45,7 @@ import List from '../ui/List.astro'
         });
 
         const tick = () => {
-            const el = document.getElementById('site-time');
+            const el = document.querySelector('.asd');
             if (el) {
                 el.textContent = fmt.format(new Date()) + ' PHT';
             }
@@ -63,4 +57,4 @@ import List from '../ui/List.astro'
             tick(); setInterval(tick, 60000);
         }, (60 - new Date().getSeconds()) * 1000);
     </script>
-</section>
+</footer>

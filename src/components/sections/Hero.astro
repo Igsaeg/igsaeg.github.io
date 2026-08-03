@@ -15,12 +15,12 @@ import banner from '../../assets/banner.jpg'
         <p class="scroll-hint justify-self-center eyebrow">KEEP SCROLLING ↆ</p> 
 
         <div class="flex flex-col items-end hero-links">
-            <UnderlineLinks title="GitHub" action="https://github.com/Igsaeg" />
-            <UnderlineLinks title="kharlfranco26@gmail.com" action="mailto:kharlfranco26@gmail.com" />
+            <UnderlineLinks title="GitHub" type="link" where="https://github.com/Igsaeg" />
+            <UnderlineLinks title="kharlfranco26@gmail.com" type="link" where="mailto:kharlfranco26@gmail.com" />
         </div>
     </div>
 
-    <ParallaxImg class="hero-image" src={banner} loading="eager" />
+    <ParallaxImg class="hero-image" src={banner} alt="Hero banner" loading="eager" />
 </section>
 
 <script>
