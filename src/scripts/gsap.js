@@ -8,22 +8,16 @@ gsap.registerPlugin(SplitText, ScrollTrigger, CustomEase);
 export { gsap, CustomEase };
 export const triggerAt = "top 70%";
 
-export function createSplit(el) {
-    return new SplitText(el, {
-        type: "lines,chars,words",
-        mask: "lines",
-    });
-}
+const createSplit = (el) => new SplitText(el, { type: "lines,chars,words", mask: "lines" });
 
-export function revealText(el, { type = "chars", ...opts } = {}) {
+export function revealText(el, { type, scroll, ...opts }) {
     const split = createSplit(el);
-    const targets = split[type];
     
-    return gsap.from(targets, {
+    return gsap.from(split[type], {
         yPercent: 100,
-        ...opts,
         ease: "power3.out",
-        scrollTrigger: { trigger: el, start: triggerAt },
+        ...opts,
+        ...(scroll ? { scrollTrigger: { trigger: el, start: triggerAt } } : {}),
         onComplete: () => split.revert(),
     });
-}
+};

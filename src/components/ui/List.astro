@@ -3,14 +3,15 @@ interface Props {
     title: string;
     items: string[];
     dark?: boolean;
+    size?: string;
     class?: string;
 }
-const { title, items, dark = false, class: className } = Astro.props;
+const { title, items, dark = false, size, class: className } = Astro.props;
 const color = dark ? "--off-white" : "--black";
 ---
-<div>
+<div class:list={className}>
     <p class="eyebrow mb-2">{title}</p>
     <ul class="flex flex-col gap-1">
-        {items.map((item) => <li><p class={`text-(${color}) ${className}`}>{item}</p></li>)}
+        {items.map((item) => <li><p class={`text-(${color}) text-[${size}]`}>{item}</p></li>)}
     </ul>
 </div>

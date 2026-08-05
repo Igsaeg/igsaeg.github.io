@@ -5,9 +5,9 @@ import billsCreditCard from "../../assets/bills-credit-card.png";
 import typingGame from "../../assets/typing-game.png";
 import clickerGame from "../../assets/clicker-game.png";
 ---
-<section id="works" class="flex flex-col gap-40 pt-8 pb-80">
-    <div class="grid grid-cols-[1fr_auto] mx-8">
-        <h2 class="works-title text-[6.5rem]">EVERY PROJECT, A STEP FORWARD.</h2>
+<section id="works" class="flex flex-col gap-40 pt-8 mb-80">
+    <div class="@container grid grid-cols-[1fr_auto] mx-8">
+        <h2 class="works-title text-[7cqw]">EVERY PROJECT, A STEP FORWARD.</h2>
         <p class="eyebrow justify-self-end self-end">02. SELECTED WORK</p>
     </div>
 
@@ -20,7 +20,7 @@ import clickerGame from "../../assets/clicker-game.png";
         <div class="border-t-2 border-t-(--faint)"></div>
 
         <div class="item item__last grid grid-cols-[0.5fr_1.5fr_0.75fr] items-end px-8 pt-16">
-            <p class="works-desc col-2">Built through curiosity, iteration, and countless revisions. These are the projects that best represent how I think and build.</p>
+            <p class="works-desc col-2">Built through curiosity and iterations. I like to keep things simple and straightforward.</p>
         </div>
     </div>
 
@@ -53,13 +53,13 @@ import clickerGame from "../../assets/clicker-game.png";
             });
 
             work.addEventListener("mouseleave", () => {
-                gsap.to(preview, { opacity: 0, duration: 0.1     });
+                gsap.to(preview, { opacity: 0, duration: 0.1 });
             });
         });
-    }
+    };
 
     document.fonts.ready.then(() => {
-        revealText(document.querySelector(".works-title"), { type: "chars", stagger: 0.02, duration: 0.9 } as any);
-        revealText(document.querySelector(".works-desc"), { type: "lines", stagger: 0.2, duration: 0.9 } as any);
+        revealText(document.querySelector(".works-title"), { type: "chars", scroll: true, stagger: 0.026, duration: 0.8 } as any);
+        revealText(document.querySelector(".works-desc"), { type: "lines", scroll: true, stagger: 0.15, duration: 0.8 } as any);
     });
 </script>

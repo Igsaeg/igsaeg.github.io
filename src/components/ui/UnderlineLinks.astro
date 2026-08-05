@@ -16,18 +16,24 @@ const color = dark ? "--off-white" : "--black";
     <span 
         style={`background-color: var(${color});`}
         class="
-            absolute left-0 -bottom-0.5 h-0.75 w-full origin-right scale-x-100
-            group-hover:animate-[underline_1s_ease-in-out_forwards]
+            absolute left-0 -bottom-0 h-0.75 w-full
+            origin-right scale-x-0
+            transition-transform duration-400 ease-in-out
+            group-hover:origin-left group-hover:scale-x-100
         "
     ></span>
 </a>
 
 <script>
+    import { lenis } from '../../scripts/lenis.js'
+
     document.querySelectorAll('a[data-scroll]').forEach((a) => {
         a.addEventListener('click', (e) => {
             e.preventDefault();
+
             const target = a.getAttribute('href');
-            (window as any).lenis?.scrollTo(target, {
+            if (!target) return;
+            lenis.scrollTo(target, {
                 duration: 1.5,
                 offset: -176,
             });

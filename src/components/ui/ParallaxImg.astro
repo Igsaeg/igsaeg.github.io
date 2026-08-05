@@ -21,6 +21,8 @@ const { src, alt, class: className, loading } = Astro.props
 </div>
 
 <script>
+    import { lenis } from '../../scripts/lenis.js';
+
     const img = document.querySelectorAll(".img") as NodeListOf<HTMLElement>;
 
     function update() {
@@ -31,10 +33,9 @@ const { src, alt, class: className, loading } = Astro.props
             const parallax = (viewportHeight - rect.top) * 0.075;
             img.style.transform = `translateY(${-50 + parallax}px)`;
         });
-    }
+    };
 
-    const lenis = (window as any).lenis;
-    lenis?.on?.('scroll', update) ?? window.addEventListener('scroll', update);
+    lenis.on('scroll', update) ?? window.addEventListener('scroll', update);
     
     update();
 </script>

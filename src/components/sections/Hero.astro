@@ -1,18 +1,16 @@
 ---
-import UnderlineLinks from '../ui/UnderlineLinks.astro'
-import ParallaxImg from '../ui/ParallaxImg.astro'
-import banner from '../../assets/banner.jpg'
+import UnderlineLinks from '../ui/UnderlineLinks.astro';
+import ParallaxImg from '../ui/ParallaxImg.astro';
+import banner from '../../assets/banner.jpg';
 ---
 <section id="home" class="@container pt-22">
     <h1 class="hero-title text-[14.4cqw] whitespace-nowrap tracking-[-5%] mx-5 mb-[15dvh]">KHARL ALFARO</h1>
 
-    <div class="grid grid-cols-[1fr_0.5fr_auto] items-end gap-4 mx-8 mb-8">
+    <div class="grid grid-cols-[60vw_1fr] items-end gap-4 mx-8 mb-8">
         <div>
             <p class="hero-eyebrow eyebrow mb-2">01. HELLO</p>
             <p class="hero-bio">A self-taught developer based in the Philippines. Exploring web design and Front-End by building thoughtful, functional digital experiences.</p>
         </div>
-
-        <p class="scroll-hint justify-self-center eyebrow">KEEP SCROLLING ↆ</p> 
 
         <div class="flex flex-col items-end hero-links">
             <UnderlineLinks title="GitHub" type="link" where="https://github.com/Igsaeg" />
@@ -24,63 +22,20 @@ import banner from '../../assets/banner.jpg'
 </section>
 
 <script>
-    import { gsap, createSplit } from '../../scripts/gsap.js';
+    import { gsap, revealText } from '../../scripts/gsap.js';
 
     document.fonts.ready.then(() => {
         const tl = gsap.timeline();
 
-        const titleSplit = createSplit(document.querySelector('.hero-title'));
-        const eyebrowSplit = createSplit(document.querySelector('.hero-eyebrow'));
-        const bioSplit = createSplit(document.querySelector('.hero-bio'));
-        const scrollSplit = createSplit(document.querySelector('.scroll-hint'));
-        const linksSplit = createSplit(document.querySelector('.hero-links'));
-        const heroImage = document.querySelector('.hero-image .parallax-wrapper');
-        const heroImageWrapper = document.querySelector('.hero-image');
-
-
         tl.addLabel("heroIn")
-        .from(titleSplit.chars, {
-            yPercent: -100,
-            stagger: 0.05,
-            duration: 1.2,
-            ease: "power4.out",
-            onComplete: () => titleSplit.revert()
-        }, "heroIn+=0.2")
-        .from(eyebrowSplit.chars, {
-            yPercent: 100,
-            stagger: 0.05,
-            duration: 0.6,
+        .add(revealText(document.querySelector('.hero-title'), { type: "chars", yPercent: -100, stagger: 0.05, duration: 1.1, ease: "power4.out" } as any), "heroIn+=0.2")
+        .from(document.querySelector('.hero-image .parallax-wrapper'), {
+            clipPath: 'inset(40% 0 0 0)',
+            duration: 1.1,
             ease: "power3.out",
-            onComplete: () => eyebrowSplit.revert()
-        }, "heroIn+=0.75")
-        .from(heroImage, {
-            yPercent: 40,
-            duration: 1.4,
-            ease: "power3.out",
-            force3D: true,
-            onStart: () => heroImageWrapper?.classList.add('hero-entering'),
-            onComplete: () => heroImageWrapper?.classList.remove('hero-entering'),
-        }, "heroIn+=0.9")
-        .from(bioSplit.lines, {
-            yPercent: 100,
-            stagger: 0.1,
-            duration: 0.8,
-            ease: "power3.out",
-            onComplete: () => bioSplit.revert()
         }, "heroIn+=1")
-        .from(linksSplit.lines, {
-            yPercent: 100,
-            stagger: 0.1,
-            duration: 0.7,
-            ease: "power3.out",
-            onComplete: () => linksSplit.revert()
-        }, "heroIn+=1.15")
-        .from(scrollSplit.lines, {
-            yPercent: 100,
-            stagger: 0.1,
-            duration: 0.7,
-            ease: "power3.out",
-            onComplete: () => scrollSplit.revert()
-        }, "heroIn+=1.25")
+        .add(revealText(document.querySelector('.hero-eyebrow'), { type: "chars", stagger: 0.04, duration: 0.9} as any), "heroIn+=1.05")
+        .add(revealText(document.querySelector('.hero-bio'), { type: "lines", stagger: 0.18, duration: 0.8} as any), "heroIn+=1.1")
+        .add(revealText(document.querySelector('.hero-links'), { type: "lines", stagger: 0.18, duration: 0.8} as any), "heroIn+=1.2")
     });
 </script>
