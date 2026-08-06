@@ -19,22 +19,25 @@
     font-display: swap;
 }
 
-:root {
+@theme default {
     --font-primary: 'Inter';
     --font-secondary: 'Stack Sans Text';
 
-    --bg: #fff;
-    --off-white: #eee;
-    --faint: #ccc;
-    --muted: #777777;
-    --black: #111111;
+    --color-bg: #fff;
+    --color-off-white: #eee;
+    --color-faint: #ccc;
+    --color-muted: #777777;
+    --color-black: #111111;
 
     --transition-slow: 0.35s ease;
+
+    --text-big: clamp(5rem, 14.6cqw, 12rem);
+    --text-title: 14.4cqw;
 }
 
 ::selection {
-    background: var(--muted);
-    color: var(--off-white);
+    background: theme(--color-muted);
+    color: theme(--color-off-white);
 }
 
 ::-webkit-scrollbar { display: none; }
@@ -43,7 +46,7 @@
 
 body {
     margin: 0;
-    background-color: var(--bg);
+    background-color: theme(--color-bg);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -52,9 +55,9 @@ body {
 
 @layer base {
     h1, h2, h3, h4, p {
-        font-family: var(--font-primary);
+        font-family: theme(--font-primary);
         font-weight: 500;
-        color: var(--black);
+        color: theme(--color-black);
         margin: 0;
         font-kerning: none;
         -webkit-font-kerning: none;
@@ -75,6 +78,6 @@ body {
     .eyebrow {
         font-size: 1.35rem;
         font-weight: 600;
-        color: var(--muted);
+        color: theme(--color-muted);
     }
 }

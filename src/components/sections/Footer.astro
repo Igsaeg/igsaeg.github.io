@@ -1,15 +1,14 @@
 ---
 import UnderlineLinks from "../ui/UnderlineLinks.astro";
-import List from '../ui/List.astro';
 ---
-<footer class="bg-(--black) text-(--off-white) pt-8 pb-6">
+<footer class="bg-black text-off-white pt-8 pb-6">
     <div class="grid grid-cols-[1fr_1fr] mx-8">
-        <div class="grid grid-rows-[1fr_auto]">
-            <p class="text-(--off-white)">A developer exploring minimalist design through thoughtful and functional web experiences.</p>
+        <div>
+            <p class="text-off-white mb-10">A developer exploring minimalist design through thoughtful and functional web experiences.</p>
 
             <div>
                 <p class="eyebrow mb-2">CONTACT ME</p>
-                <UnderlineLinks title="kharlfranco26@gmail.com" type="link" where="https://obscurastudio.webflow.io" dark={true} />
+                <UnderlineLinks title="kharlfranco26@gmail.com" type="link" where="mailto:kharlfranco26@gmail.com" dark={true} />
             </div>
         </div>
 
@@ -21,42 +20,17 @@ import List from '../ui/List.astro';
                     <UnderlineLinks title="Works" type="scroll" where="#works" dark={true} />
                     <UnderlineLinks title="About" type="scroll" where="#about" dark={true} />
                 </div>
-            </div>
+            </div>  
             
             <div>
-                <p class="eyebrow mb-2">INSPIRED BY</p>
+                <p class="eyebrow mb-2">FIND ME</p>
                 <div class="flex flex-col gap-1">
-                    <UnderlineLinks title="OBSCURA" type="link" where="https://obscurastudio.webflow.io" dark={true} />
-                    <UnderlineLinks title="Floyd Miles" type="link" where="https://fmportfolio.framer.website" dark={true} />
+                    <UnderlineLinks title="GitHub" type="link" where="https://github.com/Igsaeg/" dark={true} />
+                    <UnderlineLinks title="Instagram" type="link" where="https://instagram.com/Igsaeg_/" dark={true} />
                 </div>
             </div>
-
-            <List title="BUILT WITH" items={["Astro"]} dark={true} />
-            <List title="MY TIME" items={["Astro"]} dark={true} class="time" />
         </div>
     </div>
 
-    <h1 class="text-[14.4cqw] text-(--off-white) whitespace-nowrap tracking-[-5%] mx-5 pt-[20dvh]">KHARL ALFARO</h1>
-    
-    <script>
-        const fmt = new Intl.DateTimeFormat('en-PH', {
-            hour: 'numeric',
-            minute: '2-digit',
-            hour12: false,
-            timeZone: 'Asia/Manila',
-        });
-
-        const tick = () => {
-            const el = document.querySelector('.time > ul p');
-            if (el) {
-                el.textContent = fmt.format(new Date()) + ' PHT';
-            };
-        };
-
-        tick();
-        
-        setTimeout(() => {
-            tick(); setInterval(tick, 60000);
-        }, (60 - new Date().getSeconds()) * 1000);
-    </script>
+    <h1 class="text-title text-off-white whitespace-nowrap tracking-[-5%] mx-5 pt-[20dvh]">KHARL ALFARO</h1>
 </footer>

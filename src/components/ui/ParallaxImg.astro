@@ -7,7 +7,7 @@ interface Props {
     loading?: "eager" | "lazy";
     class?: string;
 }
-const { src, alt, class: className, loading } = Astro.props
+const { src, alt, class: className, loading } = Astro.props;
 ---
 <div class={`overflow-hidden ${className} rounded-md`}>
     <div class="parallax-wrapper" style="will-change: transform;">

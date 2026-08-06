@@ -1,9 +1,8 @@
 ---
 import ParallaxImg from '../ui/ParallaxImg.astro';
-import List from '../ui/List.astro';
 import portrait from '../../assets/portrait.jpg';
 ---
-<section id="about" class="flex flex-col mx-8 pb-8">
+<section id="about" class="flex flex-col mx-8 pb-96">
     <div class="@container grid grid-cols-[1fr_auto]">
         <h1 class="about-title text-[13.5cqw]">BEHIND THE SCREEN.</h1>
 
@@ -21,17 +20,9 @@ import portrait from '../../assets/portrait.jpg';
             <div class="flex flex-col gap-5 mr-[24%]">
                 <p class="about-text eyebrow">03. ABOUT ME</p>
                 <p class="about-text text-[1.6rem]">Hi! I'm Kharl, a 20 year old developer based in the Philippines. I focus on front-end development and website designing.</p>
-                <p class="about-text text-[1.6rem]">I build stuff with Astro or React, styled with Tailwind CSS, improve user experience using JavaScript and GSAP, and manage my code with Git and GitHub.</p>
+                <p class="about-text text-[1.6rem]">I build stuff with Astro or React, style with Tailwind CSS, improve user experience using JavaScript and GSAP, and manage my code with Git and GitHub.</p>
             </div>
         </div>
-    </div>
-
-    <div class="grid grid-cols-[0.75fr_1fr] items-end mt-80">
-        <p class="mr-[16%]">Thanks for stopping by.</p>
-
-        <span class="@container">
-            <h2 class="about-end text-[9.8cqw]">MORE TO COME.</h2>
-        </span>
     </div>
 </section>
 
@@ -58,14 +49,12 @@ import portrait from '../../assets/portrait.jpg';
         });
         gsap.from(aboutImage, {
             clipPath: "inset(0 0 100% 0)",
-            duration: 1.1,
-            ease: CustomEase.create("custom", "M0,0 C0.7,0 0.45,1 1,1 "),
+            duration: 1,
+            ease: CustomEase.create("custom", "M0,0 C0.8,0 0.4,1 1,1 "),
             scrollTrigger: {
                 trigger: aboutImage,
                 start: triggerAt,
             }
         });
-
-        revealText(document.querySelector(".about-end"), { type: "chars", scroll: true, stagger: 0.04, duration: 0.8 } as any);
     });
 </script>
