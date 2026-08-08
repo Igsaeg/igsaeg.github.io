@@ -19,22 +19,6 @@
     font-display: swap;
 }
 
-@theme default {
-    --font-primary: 'Inter';
-    --font-secondary: 'Stack Sans Text';
-
-    --color-bg: #fff;
-    --color-off-white: #eee;
-    --color-faint: #ccc;
-    --color-muted: #777777;
-    --color-black: #111111;
-
-    --transition-slow: 0.35s ease;
-
-    --text-big: clamp(5rem, 14.6cqw, 12rem);
-    --text-title: 14.4cqw;
-}
-
 ::selection {
     background: theme(--color-muted);
     color: theme(--color-off-white);
@@ -53,8 +37,29 @@ body {
     * { cursor: none; }
 }
 
+@theme default {
+    --font-primary: 'Inter';
+    --font-secondary: 'Stack Sans Text';
+
+    --color-bg: #fff;
+    --color-off-white: #eee;
+    --color-faint: #ccc;
+    --color-muted: #777777;
+    --color-black: #111111;
+
+    --transition-slow: 0.35s ease;
+
+    --text-title-lg: 14.4cqw;
+    --text-title-md: 12rem;
+    --text-subtitle-md: 6rem;
+    --text-subtitle-sm: 5rem;
+    --text-body-lg: 2.25rem;
+    --text-body-md: 1.5rem;
+    --text-body-sm: 1.25rem;
+}
+
 @layer base {
-    h1, h2, h3, h4, p {
+    h1, h2, h3, h4, p, .span-text {
         font-family: theme(--font-primary);
         font-weight: 500;
         color: theme(--color-black);
@@ -66,17 +71,15 @@ body {
 
     h1 { line-height: 0.9; }
 
-    p {
-        font-size: 2.25rem;
-        line-height: 1.2;
-    }
+    p, .span-text { line-height: 1.2; }
+    
     a {
         color: inherit;
         text-decoration: none;
     }
 
     .eyebrow {
-        font-size: 1.35rem;
+        font-size: theme(--text-body-sm);
         font-weight: 600;
         color: theme(--color-muted);
     }

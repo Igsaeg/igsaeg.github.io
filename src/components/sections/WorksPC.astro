@@ -5,9 +5,9 @@ import billsCreditCard from "../../assets/bills-credit-card.png";
 import typingGame from "../../assets/typing-game.png";
 import clickerGame from "../../assets/clicker-game.png";
 ---
-<section id="works" class="flex flex-col gap-40 pt-8 mb-68">
+<section id="works" class="flex flex-col gap-40 pt-8 mb-68" aria-labelledby="works-title">
     <div class="@container grid grid-cols-[1fr_auto] mx-8">
-        <h2 class="works-title text-[7cqw]">EVERY PROJECT, A STEP FORWARD.</h2>
+        <h2 class="works-title text-subtitle-md">EVERY PROJECT, A STEP FORWARD.</h2>
         <p class="eyebrow justify-self-end self-end">02. SELECTED WORK</p>
     </div>
 
@@ -17,16 +17,16 @@ import clickerGame from "../../assets/clicker-game.png";
         <WorksItem index="03" title="TYPING GAME" slug="typing-game" year="2023" desc="Typing Practice" href="https://igsaeg.github.io/typing-game" previewSrc={typingGame.src} />
         <WorksItem index="04" title="CLICKER GAME" slug="clicker-game" year="2023" desc="Clicker Game" href="https://igsaeg.github.io/clicker-game" previewSrc={clickerGame.src} />
 
-        <div class="border-t-2 border-t-(--faint)"></div>
-
+        <div role="separator" aria-hidden="true" class="border-t-2 border-t-faint"></div>
         <div class="item item__last grid grid-cols-[0.5fr_1.5fr_0.75fr] items-end px-8 pt-16">
-            <p class="works-desc col-2">Built through curiosity and iterations. I like to keep things simple and straightforward.</p>
+            <p class="works-desc text-body-lg col-2">Built through curiosity and iterations. I like to keep things simple and straightforward.</p>
         </div>
     </div>
 
     <img
         class="item__preview fixed left-0 top-0 w-76 pointer-events-none opacity-0 transition-opacity duration-350 ease-[ease] rounded-md"
-        alt=""
+        aria-hidden="true"
+        role="presentation"
         loading="lazy"
     />
 </section>
@@ -59,7 +59,7 @@ import clickerGame from "../../assets/clicker-game.png";
     };
 
     document.fonts.ready.then(() => {
-        revealText(document.querySelector(".works-title"), { type: "chars", scroll: true, stagger: 0.026, duration: 0.8 } as any);
+        revealText(document.querySelector(".works-title"), { type: "chars", scroll: true, stagger: 0.02, duration: 0.8 } as any);
         revealText(document.querySelector(".works-desc"), { type: "lines", scroll: true, stagger: 0.15, duration: 0.8 } as any);
     });
 </script>

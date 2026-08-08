@@ -10,20 +10,21 @@ interface Props {
 }
 const { index, title, slug, year, desc, href, previewSrc } = Astro.props;
 ---
-<div class="border-t-2 border-t-faint"></div>
-<a
-    href={href}
-    class={`item item__${slug} group @container relative grid grid-cols-[0.5fr_1.5fr_0.75fr] items-end px-8 py-16`}
-    data-preview={previewSrc}
->
-    <p class="font-secondary text-[1.25rem] font-medium">{index}.</p>
-
-    <h3 class="text-[5.5cqw] font-semibold leading-[0.8] transition-all duration-350 ease-[ease] group-hover:scale-[0.98]">{title}</h3>
-
-    <div class="flex flex-col items-end">
-        <p class="font-secondary text-[2rem] font-normal">{year}</p>
-        <p class="text-[1.5rem]">{desc}</p>
-    </div>
-
-    <span class="absolute bottom-0 left-0 h-0 w-full bg-off-white mix-blend-difference transition-all duration-350 ease-[ease] group-hover:h-full"></span>
-</a>
+<div role="separator" aria-hidden="true" class="border-t-2 border-t-faint"></div>
+<article class={`item item__${slug} group relative`} data-preview={previewSrc}>
+    <a
+        href={href}
+        class="grid grid-cols-[0.5fr_1.5fr_0.75fr] items-end px-8 py-16"
+        aria-label={`${title}, ${year}`}
+    >
+        <span class="span-text font-secondary text-body-sm font-medium">{index}.</span>
+    
+        <h2 class="text-subtitle-sm font-semibold leading-[0.8] transition-all duration-350 ease-[ease] group-hover:scale-[0.98]">{title}</h2>
+    
+        <div class="flex flex-col items-end">
+            <span class="span-text font-secondary text-body-lg font-normal">{year}</span>
+            <span class="span-text text-body-md">{desc}</span>
+        </div>
+    </a>
+    <span class="absolute bottom-0 left-0 h-0 w-full bg-off-white mix-blend-difference pointer-events-none transition-all duration-350 ease-[ease] group-hover:h-full"></span>
+</article>

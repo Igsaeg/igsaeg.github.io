@@ -1,36 +1,38 @@
 ---
 import UnderlineLinks from "../ui/UnderlineLinks.astro";
 ---
-<footer class="bg-black text-off-white pt-8 pb-6">
+<footer class="bg-black text-off-white pt-8 pb-6" aria-label="Footer">
     <div class="grid grid-cols-[1fr_1fr] mx-8">
-        <div>
-            <p class="text-off-white mb-10">A developer exploring minimalist design through thoughtful and functional web experiences.</p>
+        <section aria-labelledby="contact-heading">
+            <p class="text-body-lg text-off-white mb-10">A developer exploring minimalist design through thoughtful and functional web experiences.</p>
 
             <div>
                 <p class="eyebrow mb-2">CONTACT ME</p>
                 <UnderlineLinks title="kharlfranco26@gmail.com" type="link" where="mailto:kharlfranco26@gmail.com" dark={true} />
             </div>
-        </div>
+        </section>
 
-        <div class="grid grid-cols-[1fr_1fr] gap-y-6 ml-[30%]">
+        <nav aria-label="Footer navigation" class="grid grid-cols-[1fr_1fr] gap-y-6 ml-[30%]">
             <div>
-                <p class="eyebrow mb-2">GO TO</p>
-                <div class="flex flex-col gap-1">
-                    <UnderlineLinks title="Home" type="scroll" where="#home" dark={true} />
-                    <UnderlineLinks title="Works" type="scroll" where="#works" dark={true} />
-                    <UnderlineLinks title="About" type="scroll" where="#about" dark={true} />
-                </div>
+                <h3 id="footer-nav-heading" class="eyebrow mb-2">GO TO</h3>
+                <ul class="flex flex-col gap-1 list-none p-0 m-0">
+                    <li><UnderlineLinks title="Home" type="scroll" where="#home" dark={true} /></li>
+                    <li><UnderlineLinks title="Works" type="scroll" where="#works" dark={true} /></li>
+                    <li><UnderlineLinks title="About" type="scroll" where="#about" dark={true} /></li>
+                </ul>
             </div>  
             
             <div>
-                <p class="eyebrow mb-2">FIND ME</p>
-                <div class="flex flex-col gap-1">
-                    <UnderlineLinks title="GitHub" type="link" where="https://github.com/Igsaeg/" dark={true} />
-                    <UnderlineLinks title="Instagram" type="link" where="https://instagram.com/Igsaeg_/" dark={true} />
-                </div>
+                <h3 id="social-heading" class="eyebrow mb-2">FIND ME</h3>
+                <ul class="flex flex-col gap-1 list-none p-0 m-0">
+                    <li><UnderlineLinks title="GitHub" type="link" where="https://github.com/Igsaeg/" dark={true} /></li>
+                    <li><UnderlineLinks title="Instagram" type="link" where="https://instagram.com/Igsaeg_/" dark={true} /></li>
+                </ul>
             </div>
-        </div>
+        </nav>
     </div>
 
-    <h1 class="text-title text-off-white whitespace-nowrap tracking-[-5%] mx-5 pt-[20dvh]">KHARL ALFARO</h1>
+    <div class="@container mt-auto pt-[20dvh]">
+        <h2 class="text-title-lg text-off-white whitespace-nowrap tracking-[-5%] mx-5">KHARL ALFARO</h2>
+    </div>
 </footer>

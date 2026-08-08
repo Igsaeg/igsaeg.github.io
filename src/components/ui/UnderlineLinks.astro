@@ -3,22 +3,21 @@ interface Props {
     title: string;
     type: string;
     where: string;
-    dark?: boolean;
     size?: string;
+    dark?: boolean;
 }
-const { title, type, where, dark = false, size } = Astro.props;
-const textColor = dark ? "text-off-white" : "text-black";
-const underlineColor = dark ? "bg-off-white" : "bg-black";
+const { title, type, where, size = "text-body-lg", dark = false } = Astro.props;
+const color = dark ? "off-white" : "black";
 
 ---
-<a href={where} class="group relative inline-block w-fit" data-scroll={type == "scroll" ? "" : undefined}>
-    <p class={textColor} style={`font-size: ${size};`}>{title}</p>
+<a 
+    href={where} 
+    class="group relative inline-block w-fit" 
+    data-scroll={type == "scroll" ? "" : undefined}
+>
+    <span class={`span-text ${size} text-${color}`}>{title}</span>
 
-    <span 
-        class={
-            `absolute left-0 bottom-0 h-1 w-full origin-right scale-x-0 transition-transform duration-400 ease-in-out group-hover:origin-left group-hover:scale-x-100 ${underlineColor}`
-        }
-    ></span>
+    <span class={`bg-${color} absolute left-0 bottom-0 h-1 w-full origin-right scale-x-0 transition-transform duration-400 ease-in-out group-hover:origin-left group-hover:scale-x-100`}></span>
 </a>
 
 <script>

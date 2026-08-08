@@ -4,18 +4,18 @@ import ParallaxImg from '../ui/ParallaxImg.astro';
 import banner from '../../assets/banner.jpg';
 ---
 <section id="home" class="@container pt-22">
-    <h1 class="hero-title text-title whitespace-nowrap tracking-[-5%] mx-5 mb-[15dvh]">KHARL ALFARO</h1>
+    <h1 class="hero-title text-title-lg whitespace-nowrap tracking-[-5%] mx-5 mb-[15dvh]">KHARL ALFARO</h1>
 
     <div class="grid grid-cols-[55vw_1fr] items-end mx-8 mb-8">
         <div>
             <p class="hero-eyebrow eyebrow mb-2">01. HELLO</p>
-            <p class="hero-bio">A self-taught developer based in the Philippines. Exploring web design and Front-End by building thoughtful, functional digital experiences.</p>
+            <p class="hero-bio text-body-lg">A self-taught developer based in the Philippines. Exploring web design and Front-End by building thoughtful, functional digital experiences.</p>
         </div>
 
-        <div class="flex flex-col items-end hero-links">
+        <nav aria-label="Contact links" class="hero-links flex flex-col items-end gap-2">
             <UnderlineLinks title="GitHub" type="link" where="https://github.com/Igsaeg" />
             <UnderlineLinks title="kharlfranco26@gmail.com" type="link" where="mailto:kharlfranco26@gmail.com" />
-        </div>
+        </nav>
     </div>
 
     <ParallaxImg class="hero-image" src={banner} alt="Hero banner" loading="eager" />

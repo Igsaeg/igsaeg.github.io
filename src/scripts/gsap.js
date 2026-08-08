@@ -6,7 +6,7 @@ import { CustomEase } from "gsap/CustomEase";
 gsap.registerPlugin(SplitText, ScrollTrigger, CustomEase);
 
 export { gsap, CustomEase };
-export const triggerAt = "top 65%";
+export const triggerAt = "top 70%";
 
 const createSplit = (el) => new SplitText(el, { type: "lines,chars,words", mask: "lines" });
 
