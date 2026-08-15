@@ -1,0 +1,1 @@
+import{t as e}from"./lenis.CClNuxmu.js";var t=document.querySelectorAll(`.img`);function n(){let e=window.innerHeight;t.forEach(t=>{let n=t.getBoundingClientRect();if(n.top>=e||n.bottom<=0)return;let r=(e-n.top)*.08;t.style.transform=`translateY(${-50+r}px)`})}e.on(`scroll`,n)??window.addEventListener(`scroll`,n),n();

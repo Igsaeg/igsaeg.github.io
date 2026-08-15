@@ -1,0 +1,1 @@
+import{t as e}from"./lenis.CClNuxmu.js";document.querySelectorAll(`a[data-scroll]`).forEach(t=>{t.addEventListener(`click`,n=>{n.preventDefault();let r=t.getAttribute(`href`);r&&e.scrollTo(r,{duration:1.5,offset:-176})})});
