@@ -5,26 +5,26 @@ import billsCreditCard from "../../assets/bills-credit-card.png";
 import typingGame from "../../assets/typing-game.png";
 import clickerGame from "../../assets/clicker-game.png";
 ---
-<section id="works" class="flex flex-col gap-40 pt-8 mb-68" aria-labelledby="works-title">
-    <div class="@container grid grid-cols-[1fr_auto] mx-8">
-        <h2 class="works-title text-subtitle-md">EVERY PROJECT, A STEP FORWARD.</h2>
-        <p class="eyebrow justify-self-end self-end">02. SELECTED WORK</p>
+<section id="portfolio-section" class="pt-8 mb-72" aria-labelledby="works-title">
+    <div class="grid grid-cols-[1fr_16.67%] mx-margin mb-40">
+        <h2 class="works_title text-subtitle-lg mr-[20%]">EVERY PROJECT, A STEP FORWARD.</h2>
+        <p class="eyebrow self-end">02. SELECTED WORK</p>
     </div>
 
     <div>
-        <WorksItem index="01" title="REWIND" slug="rewind" year="2026" desc="Digital Gallery" href="https://igsaeg.github.io/rewind" previewSrc={rewind.src} />
-        <WorksItem index="02" title="BILLS CREDIT CARD" slug="bcc" year="2023" desc="Spending Game" href="https://igsaeg.github.io/bills-credit-card" previewSrc={billsCreditCard.src} />
-        <WorksItem index="03" title="TYPING GAME" slug="typing-game" year="2023" desc="Typing Practice" href="https://igsaeg.github.io/typing-game" previewSrc={typingGame.src} />
-        <WorksItem index="04" title="CLICKER GAME" slug="clicker-game" year="2023" desc="Clicker Game" href="https://igsaeg.github.io/clicker-game" previewSrc={clickerGame.src} />
-
+        <WorksItem index="01" title="REWIND" slug="rewind" year="2026" href="https://igsaeg.github.io/rewind" previewSrc={rewind.src} />
+        <WorksItem index="02" title="BILLS CREDIT CARD" slug="bcc" year="2023" href="https://igsaeg.github.io/bills-credit-card" previewSrc={billsCreditCard.src} />
+        <WorksItem index="03" title="TYPING GAME" slug="typing-game" year="2023" href="https://igsaeg.github.io/typing-game" previewSrc={typingGame.src} />
+        <WorksItem index="04" title="CLICKER GAME" slug="clicker-game" year="2023" href="https://igsaeg.github.io/clicker-game" previewSrc={clickerGame.src} />
         <div role="separator" aria-hidden="true" class="border-t-2 border-t-faint"></div>
-        <div class="item item__last grid grid-cols-[0.5fr_1.5fr_0.75fr] items-end px-8 pt-16">
-            <p class="works-desc text-body-lg col-2">Built through curiosity and iterations. I like to keep things simple and straightforward.</p>
+
+        <div class="mx-margin pt-16">
+            <p class="works_desc text-body-lg col-2 ml-[16.67%] mr-[33.33%]">Built through curiosity and iterations. I like to keep things simple and straightforward. Every project teaches me something new.</p>
         </div>
     </div>
 
     <img
-        class="item__preview fixed left-0 top-0 w-76 pointer-events-none opacity-0 transition-opacity duration-350 ease-[ease] rounded-md"
+        class="item__preview fixed left-0 top-0 w-80 pointer-events-none opacity-0 transition-opacity duration-350 ease-[ease]"
         aria-hidden="true"
         role="presentation"
         loading="lazy"
@@ -34,12 +34,12 @@ import clickerGame from "../../assets/clicker-game.png";
 <script>
     import { gsap, revealText } from '../../scripts/gsap.js';
 
-    const works = document.querySelectorAll<HTMLElement>(".item:not(.item__last)");
+    const works = document.querySelectorAll<HTMLElement>(".item");
     const preview = document.querySelector<HTMLImageElement>(".item__preview");
 
     if (preview && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-        const xTo = gsap.quickTo(preview, "x", { duration: 0.3, ease: "power3" });
-        const yTo = gsap.quickTo(preview, "y", { duration: 0.3, ease: "power3" });
+        const xTo = gsap.quickTo(preview, "x", { duration: 0.35, ease: "power3" });
+        const yTo = gsap.quickTo(preview, "y", { duration: 0.35, ease: "power3" });
 
         document.addEventListener('mousemove', (e) => {
             xTo(e.clientX + 8);
@@ -59,7 +59,7 @@ import clickerGame from "../../assets/clicker-game.png";
     };
 
     document.fonts.ready.then(() => {
-        revealText(document.querySelector(".works-title"), { type: "chars", scroll: true, stagger: 0.02, duration: 0.8 } as any);
-        revealText(document.querySelector(".works-desc"), { type: "lines", scroll: true, stagger: 0.15, duration: 0.8 } as any);
+        revealText(document.querySelector(".works_title"), { type: "chars", scroll: true, stagger: 0.02, duration: 0.8 } as any);
+        revealText(document.querySelector(".works_desc"), { type: "lines", scroll: true, stagger: 0.2, duration: 0.8 } as any);
     });
 </script>

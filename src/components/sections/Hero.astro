@@ -1,24 +1,24 @@
 ---
-import UnderlineLinks from '../ui/UnderlineLinks.astro';
+import UnderlineLink from '../ui/UnderlineLink.astro';
 import ParallaxImg from '../ui/ParallaxImg.astro';
 import banner from '../../assets/banner.jpg';
 ---
-<section id="home" class="@container pt-22">
-    <h1 class="hero-title text-title-lg whitespace-nowrap tracking-[-5%] mx-5 mb-[15dvh]">KHARL ALFARO</h1>
+<section id="hero-section" class="@container pt-20">
+    <h1 class="hero_title text-title-lg whitespace-nowrap tracking-[-5%] mx-5 mb-32">KHARL ALFARO</h1>
 
-    <div class="grid grid-cols-[55vw_1fr] items-end mx-8 mb-8">
+    <div class="grid grid-cols-[55vw_1fr] items-end mx-margin mb-8">
         <div>
-            <p class="hero-eyebrow eyebrow mb-2">01. HELLO</p>
-            <p class="hero-bio text-body-lg">A self-taught developer based in the Philippines. Exploring web design and Front-End by building thoughtful, functional digital experiences.</p>
+            <p class="hero_eyebrow eyebrow mb-2">01. HELLO</p>
+            <p class="hero_bio text-body-lg">A self-taught developer based in the Philippines.<br>Exploring design and code through designing with<br>purpose, aesthetic precision, and clarity.</p>
         </div>
 
-        <nav aria-label="Contact links" class="hero-links flex flex-col items-end gap-2">
-            <UnderlineLinks title="GitHub" type="link" where="https://github.com/Igsaeg" />
-            <UnderlineLinks title="kharlfranco26@gmail.com" type="link" where="mailto:kharlfranco26@gmail.com" />
+        <nav aria-label="Contact links" class="hero_links flex flex-col items-end">
+            <UnderlineLink title="GitHub" type="link" where="https://github.com/Igsaeg" />
+            <UnderlineLink title="kharlfranco26@gmail.com" type="link" where="mailto:kharlfranco26@gmail.com" />
         </nav>
     </div>
 
-    <ParallaxImg class="hero-image" src={banner} alt="Hero banner" loading="eager" />
+    <ParallaxImg class="hero_image" src={banner} alt="Hero banner" loading="eager" />
 </section>
 
 <script>
@@ -28,14 +28,14 @@ import banner from '../../assets/banner.jpg';
         const tl = gsap.timeline();
 
         tl.addLabel("heroIn")
-        .add(revealText(document.querySelector('.hero-title'), { type: "chars", yPercent: -100, stagger: 0.05, duration: 1.1, ease: "power4.out" } as any), "heroIn+=0.2")
-        .from(document.querySelector('.hero-image .parallax-wrapper'), {
+        .add(revealText(document.querySelector('.hero_title'), { type: "chars", yPercent: -100, stagger: 0.05, duration: 1.1, ease: "power4.out" } as any), "heroIn+=0.2")
+        .from(document.querySelector('.hero_image .parallax-wrapper'), {
             clipPath: 'inset(40% 0 0 0)',
             duration: 1.1,
             ease: "power3.out",
-        }, "heroIn+=1")
-        .add(revealText(document.querySelector('.hero-eyebrow'), { type: "chars", stagger: 0.04, duration: 0.9} as any), "heroIn+=1.05")
-        .add(revealText(document.querySelector('.hero-bio'), { type: "lines", stagger: 0.18, duration: 0.8} as any), "heroIn+=1.1")
-        .add(revealText(document.querySelector('.hero-links'), { type: "lines", stagger: 0.18, duration: 0.8} as any), "heroIn+=1.2")
+        }, "heroIn+=0.8")
+        .add(revealText(document.querySelector('.hero_eyebrow'), { type: "chars", stagger: 0.04, duration: 0.9} as any), "heroIn+=0.85")
+        .add(revealText(document.querySelector('.hero_bio'), { type: "lines", stagger: 0.18, duration: 0.8} as any), "heroIn+=0.95")
+        .add(revealText(document.querySelector('.hero_links'), { type: "lines", stagger: 0.18, duration: 0.8} as any), "heroIn+=1.05")
     });
 </script>

@@ -24,38 +24,35 @@
     color: theme(--color-off-white);
 }
 
-::-webkit-scrollbar { display: none; }
-
 * { box-sizing: border-box; }
+
+html { scrollbar-color: theme(--color-muted) theme(--color-faint); }
 
 body {
     margin: 0;
-    background-color: theme(--color-bg);
+    background-color: theme(--color-off-white);
 }
 
-@media (hover: hover) and (pointer: fine) {
-    * { cursor: none; }
-}
 
 @theme default {
     --font-primary: 'Inter';
     --font-secondary: 'Stack Sans Text';
 
-    --color-bg: #fff;
     --color-off-white: #eee;
     --color-faint: #ccc;
-    --color-muted: #777777;
-    --color-black: #111111;
-
-    --transition-slow: 0.35s ease;
+    --color-muted: #777;
+    --color-black: #111;
 
     --text-title-lg: 14.4cqw;
-    --text-title-md: 12rem;
-    --text-subtitle-md: 6rem;
-    --text-subtitle-sm: 5rem;
+    --text-title-md: 10rem;
+    --text-subtitle-lg: 6rem;
+    --text-subtitle-md: 5.25rem;
+    --text-subtitle-sm: 4.75rem;
     --text-body-lg: 2.25rem;
     --text-body-md: 1.5rem;
     --text-body-sm: 1.25rem;
+
+    --spacing-margin: 2rem;
 }
 
 @layer base {
@@ -67,9 +64,7 @@ body {
         font-kerning: none;
         -webkit-font-kerning: none;
     }
-    h2, h3, h4 { line-height: 1; }
-
-    h1 { line-height: 0.9; }
+    h1, h2, h3, h4 { line-height: 1; }
 
     p, .span-text { line-height: 1.2; }
     

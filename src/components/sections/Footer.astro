@@ -1,32 +1,32 @@
 ---
-import UnderlineLinks from "../ui/UnderlineLinks.astro";
+import UnderlineLink from "../ui/UnderlineLink.astro";
 ---
-<footer class="bg-black text-off-white pt-8 pb-6" aria-label="Footer">
-    <div class="grid grid-cols-[1fr_1fr] mx-8">
+<footer class="bg-black pt-8 pb-6" aria-label="Footer">
+    <div class="grid grid-cols-2 mx-margin">
         <section aria-labelledby="contact-heading">
             <p class="text-body-lg text-off-white mb-10">A developer exploring minimalist design through thoughtful and functional web experiences.</p>
 
             <div>
                 <p class="eyebrow mb-2">CONTACT ME</p>
-                <UnderlineLinks title="kharlfranco26@gmail.com" type="link" where="mailto:kharlfranco26@gmail.com" dark={true} />
+                <UnderlineLink title="kharlfranco26@gmail.com" type="link" where="mailto:kharlfranco26@gmail.com" dark={true} />
             </div>
         </section>
 
-        <nav aria-label="Footer navigation" class="grid grid-cols-[1fr_1fr] gap-y-6 ml-[30%]">
+        <nav aria-label="Footer navigation" class="grid grid-cols-2 w-[66.67%] justify-self-end">
             <div>
                 <h3 id="footer-nav-heading" class="eyebrow mb-2">GO TO</h3>
                 <ul class="flex flex-col gap-1 list-none p-0 m-0">
-                    <li><UnderlineLinks title="Home" type="scroll" where="#home" dark={true} /></li>
-                    <li><UnderlineLinks title="Works" type="scroll" where="#works" dark={true} /></li>
-                    <li><UnderlineLinks title="About" type="scroll" where="#about" dark={true} /></li>
+                    <li><UnderlineLink title="Home" type="scroll" where="#hero-section" dark={true} /></li>
+                    <li><UnderlineLink title="Works" type="scroll" where="#portfolio-section" dark={true} /></li>
+                    <li><UnderlineLink title="About" type="scroll" where="#about-me-section" dark={true} /></li>
                 </ul>
             </div>  
             
             <div>
                 <h3 id="social-heading" class="eyebrow mb-2">FIND ME</h3>
-                <ul class="flex flex-col gap-1 list-none p-0 m-0">
-                    <li><UnderlineLinks title="GitHub" type="link" where="https://github.com/Igsaeg/" dark={true} /></li>
-                    <li><UnderlineLinks title="Instagram" type="link" where="https://instagram.com/Igsaeg_/" dark={true} /></li>
+                <ul class="flex flex-col gap-1 p-0 m-0">
+                    <li><UnderlineLink title="GitHub" type="link" where="https://github.com/Igsaeg/" dark={true} /></li>
+                    <li><UnderlineLink title="Instagram" type="link" where="https://instagram.com/Igsaeg_/" dark={true} /></li>
                 </ul>
             </div>
         </nav>

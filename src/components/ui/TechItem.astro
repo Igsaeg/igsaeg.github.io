@@ -1,0 +1,18 @@
+---
+interface Props {
+    text: string[];
+    icon?: ImageMetadata;
+    class?: string;
+}
+const { text, icon, class: className } = Astro.props;
+---
+{text.map((item) => (
+    <div class:list={["relative flex flex-col items-center justify-center w-[calc(100%-(--spacing(2))*2)] aspect-square m-2", className]}>
+        <div class="absolute top-0 left-0 w-5 h-5 border-l-2 border-t-2 border-muted"></div>
+        <div class="absolute top-0 right-0 w-5 h-5 border-r-2 border-t-2 border-muted"></div>
+        <div class="absolute bottom-0 left-0 w-5 h-5 border-l-2 border-b-2 border-muted"></div>
+        <div class="absolute bottom-0 right-0 w-5 h-5 border-r-2 border-b-2 border-muted"></div>
+
+        <p class="text-body-md">{item}</p>
+    </div>
+))}

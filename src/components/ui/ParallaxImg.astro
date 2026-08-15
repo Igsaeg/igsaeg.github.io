@@ -7,14 +7,14 @@ interface Props {
     loading?: "eager" | "lazy";
     class?: string;
 }
-const { src, alt, class: className, loading } = Astro.props;
+const { src, alt, loading, class: className } = Astro.props;
 ---
-<div class={`overflow-hidden ${className} rounded-md`}>
+<div class:list={["overflow-hidden", className]}>
     <div class="parallax-wrapper" will-change-transform>
         <Image
             src={src}
             alt={alt}
-            class="img block w-full h-auto pointer-events-none select-none rounded-md"
+            class="img block w-full h-auto pointer-events-none select-none"
             loading={loading}
         />
     </div>
@@ -30,12 +30,11 @@ const { src, alt, class: className, loading } = Astro.props;
         img.forEach((img) => {
             const rect = img.getBoundingClientRect();
             if (rect.top >= viewportHeight || rect.bottom <= 0) return;
-            const parallax = (viewportHeight - rect.top) * 0.075;
+            const parallax = (viewportHeight - rect.top) * 0.08;
             img.style.transform = `translateY(${-50 + parallax}px)`;
         });
     };
 
     lenis.on('scroll', update) ?? window.addEventListener('scroll', update);
-    
     update();
 </script>

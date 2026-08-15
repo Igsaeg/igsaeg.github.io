@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import Cursor from '../components/ui/Cursor.astro';
 ---
 
 <!doctype html>
@@ -14,8 +13,18 @@ import Cursor from '../components/ui/Cursor.astro';
 	</head>
 
 	<body>
-        <Cursor />
-		<slot />
+        <div class="relative">
+            <div class="absolute top-0 left-0 -z-1 grid grid-cols-6 w-full h-full px-margin">
+                <span class="border-faint border-l opacity-40"></span>
+                <span class="border-faint border-l opacity-40"></span>
+                <span class="border-faint border-l opacity-40"></span>
+                <span class="border-faint border-l opacity-40"></span>
+                <span class="border-faint border-l opacity-40"></span>
+                <span class="border-faint border-x opacity-40"></span>
+            </div>
+            
+            <slot />
+        </div>
 
 		<script type="module"> import '../scripts/lenis.js'; </script>
 	</body>

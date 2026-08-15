@@ -5,6 +5,8 @@ export const lenis = new Lenis({
     smoothWheel: true,
     wheelMultiplier: 1,
     touchMultiplier: 1.2,
+    smoothTouch: false,
+    mouseMultiplier: 1,
 });
 
 function raf(time) {

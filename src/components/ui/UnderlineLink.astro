@@ -7,17 +7,22 @@ interface Props {
     dark?: boolean;
 }
 const { title, type, where, size = "text-body-lg", dark = false } = Astro.props;
-const color = dark ? "off-white" : "black";
-
 ---
 <a 
     href={where} 
     class="group relative inline-block w-fit" 
     data-scroll={type == "scroll" ? "" : undefined}
 >
-    <span class={`span-text ${size} text-${color}`}>{title}</span>
+    <span class:list={["span-text", size, dark ? "text-off-white" : "text-black"]}>
+        {title}
+    </span>
 
-    <span class={`bg-${color} absolute left-0 bottom-0 h-1 w-full origin-right scale-x-0 transition-transform duration-400 ease-in-out group-hover:origin-left group-hover:scale-x-100`}></span>
+    <span
+        class:list={[
+            "absolute left-0 bottom-0 h-1 w-full origin-right scale-x-0 transition-transform duration-400 ease-in-out group-hover:origin-left group-hover:scale-x-100",
+            dark ? "bg-off-white" : "bg-black"
+        ]}
+    />
 </a>
 
 <script>
