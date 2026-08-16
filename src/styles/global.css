@@ -26,11 +26,14 @@
 
 * { box-sizing: border-box; }
 
-html { scrollbar-color: theme(--color-muted) theme(--color-faint); }
+html {
+    font-size: 16px;
+    scrollbar-color: theme(--color-muted) theme(--color-faint);
+}
 
 body {
     margin: 0;
-    background-color: theme(--color-off-white);
+    background-color: #fff;
 }
 
 

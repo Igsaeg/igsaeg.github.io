@@ -1,10 +1,20 @@
 ---
 import ParallaxImg from '../ui/ParallaxImg.astro';
 import TechItem from '../ui/TechItem.astro'
+
 import portrait from '../../assets/portrait.jpg';
+import html from '../../assets/icons/html5-logo.svg'
+import css from '../../assets/icons/css3-logo.svg'
+import javascript from '../../assets/icons/javascript-logo.svg'
+import python from '../../assets/icons/python-logo.svg'
+import tailwind from '../../assets/icons/tailwind-logo.svg'
+import gsap from '../../assets/icons/gsap-logo.svg'
+import lenis from '../../assets/icons/lenis-logo.png'
+import astro from '../../assets/icons/astro-logo.svg'
+import react from '../../assets/icons/react-logo.svg'
 ---
 <section id="about-me-section" class="pb-24 mx-margin">
-    <div class="grid grid-cols-[66.67%_1fr] mb-40">
+    <div class="grid grid-cols-[66.67%_1fr] mb-36">
         <h1 class="about_title text-title-md">BEHIND THE SCREEN.</h1>
 
         <svg class="text-black h-32 self-end justify-self-end" aria-hidden="true" aria-label="Decorative divider" viewBox="-20.34 24.84 60.72 60.72" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="0">
@@ -16,10 +26,10 @@ import portrait from '../../assets/portrait.jpg';
         <ParallaxImg class="w-[33.33%] shrink-0" src={portrait} alt="Portrait of me" loading="lazy" />
 
         <div class="flex flex-col justify-between flex-1">
-                <h2 class="about_subtitle text-subtitle-md ml-6">LEARNING NEVER<br>STOPS, NEITHER DO I.</h2>
+                <h2 class="about_subtitle text-subtitle-md ml-4">LEARNING NEVER<br>STOPS, NEITHER DO I.</h2>
     
                 <div class="grid grid-cols-[25%_1fr]">
-                    <p class="about_eyebrow eyebrow ml-6">03. ABOUT ME</p>
+                    <p class="about_eyebrow eyebrow ml-4">03. ABOUT ME</p>
 
                     <div class="mr-[16.67%]">
                         <p class="about_text text-body-md mb-6">Hi! I'm Kharl, a 20 year old developer based in the Philippines. I focus on front-end development and website designing.</p>
@@ -29,43 +39,92 @@ import portrait from '../../assets/portrait.jpg';
         </div>
     </div>
 
-    <div class="flex justify-between">
+    <div class="flex justify-between h-120">
         <div>
             <p class="eyebrow mb-4">04. TECH STACK — HOVER TO VIEW</p>
 
             <ul class="group w-fit">
-                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-6 hover:cursor-pointer group-hover:text-muted hover:text-black">LANGUAGES</span></li>
-                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-6 hover:cursor-pointer group-hover:text-muted hover:text-black">FRAMEWORKS</span></li>
-                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-6 hover:cursor-pointer group-hover:text-muted hover:text-black">DESIGN</span></li>
-                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-6 hover:cursor-pointer group-hover:text-muted hover:text-black">TOOLS</span></li>
+                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-6 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="language">LANGUAGES</span></li>
+                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-6 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="framework">FRAMEWORKS</span></li>
+                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-6 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="design">DESIGN</span></li>
+                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-6 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="tools">TOOLS</span></li>
             </ul>
         </div>
 
-        <div class="w-[33.33%] grid grid-cols-2">
-            <TechItem class="tech_language" text={["HTML", "CSS", "JavaScript", "Python"]} />
-            <TechItem class="tech_framework" text={["Astro", "React"]} />
-            <TechItem class="tech_design" text={["Tailwind", "CSS", "GSAP", "Lenis", "Figma"]} />
-            <TechItem class="tech_tools" text={["Git", "GitHub"]} />
+        <div class="w-[50%] flex flex-col">
+            <TechItem class="tech_item hidden" data-category="language"
+                content={[
+                    {text: "HTML", icon: html},
+                    {text: "CSS", icon: css},
+                    {text: "JavaScript", icon: javascript},
+                    {text: "Python", icon: python}
+                ]}
+            />
+            <TechItem class="tech_item hidden" data-category="framework"
+                content={[
+                    {text: "Astro", icon: astro},
+                    {text: "React", icon: react}
+                ]}
+            />
+            <TechItem class="tech_item hidden" data-category="design"
+                content={[
+                    {text: "Tailwind", icon: tailwind},
+                    {text: "GSAP", icon: gsap},
+                    {text: "Lenis", icon: lenis}
+                ]}
+            />
+            <TechItem class="tech_item hidden" data-category="tools"
+                content={[
+                    {text: "Vite", icon: portrait},
+                    {text: "Git", icon: portrait},
+                    {text: "GitHub", icon: portrait}
+                ]}
+            />
         </div>
     </div>
 </section>
 
 <script>
-    import { revealText } from '../../scripts/gsap.js';
+    import { gsap, revealText } from '../../scripts/gsap.js';
 
-    document.querySelectorAll(".tech").forEach((el) => {
-        el.addEventListener("mouseenter", () => {
-            console.log("Hovered on:");
+    let activeItem: HTMLElement | null = null;
+
+    function showCategory(el: HTMLElement) {
+        const children = el.querySelectorAll(":scope > div");
+        gsap.killTweensOf(children);
+        gsap.fromTo(children,
+            { opacity: 0, scale: 1.1 },
+            { opacity: 1, scale: 1, stagger: 0.08, duration: 1.2, ease: "power4.out" }
+        );
+    }
+
+    function hideCategory(el: HTMLElement) {
+        const children = el.querySelectorAll(":scope > div");
+        gsap.killTweensOf(children);
+        gsap.set(children, { opacity: 0 });
+        el.classList.add("hidden");
+    }
+
+    document.querySelectorAll<HTMLElement>(".tech").forEach((trigger) => {
+        const item = document.querySelector<HTMLElement>(`.tech_item[data-category="${trigger.dataset.target}"]`);
+
+        trigger.addEventListener("mouseenter", () => {
+            if (!item || item === activeItem) return;
+
+            if (activeItem) hideCategory(activeItem);
+
+            item.classList.remove("hidden");
+            showCategory(item);
+            activeItem = item;
         });
     });
-
+    
     document.fonts.ready.then(() => {
         revealText(document.querySelector(".about_title"), { type: "chars", scroll: true, stagger: 0.04, duration: 0.7 } as any);
-
         revealText(document.querySelector(".about_subtitle"), { type: "lines", scroll: true, stagger: 0.2, duration: 0.8 } as any);
-        revealText(document.querySelector(".about_eyebrow"), { type: "chars", scroll: true, customTrigger: document.querySelector(".about_subtitle"), stagger: 0.035, duration: 0.9, delay: 0.5} as any);
+        revealText(document.querySelector(".about_eyebrow"), { type: "chars", scroll: true, customTrigger: document.querySelector(".about_subtitle"), stagger: 0.035, duration: 0.9, delay: 0.5 } as any);
         document.querySelectorAll(".about_text").forEach(el => {
-            revealText(el, { type: "lines", scroll: true, customTrigger: document.querySelector(".about_subtitle"), stagger: 0.12, duration: 0.8, delay: 0.55} as any);
+            revealText(el, { type: "lines", scroll: true, customTrigger: document.querySelector(".about_subtitle"), stagger: 0.12, duration: 0.8, delay: 0.55 } as any);
         });
     });
 </script>
