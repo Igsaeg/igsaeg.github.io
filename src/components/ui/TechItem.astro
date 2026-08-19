@@ -1,24 +1,27 @@
 ---
-import { Image } from 'astro:assets';
-
 interface Props {
-    content: { text: string; icon: ImageMetadata; }[];
+    content: { text: string; icon: string; }[];
     class?: string;
     [key: `data-${string}`]: string | undefined;
 }
-
 const { content, class: className, ...rest } = Astro.props;
 ---
 
 <div class:list={["grid grid-cols-3", className]} {...rest}>
     {content.map((item) => (
-        <div class="relative flex flex-col items-center justify-center w-[calc(100%-(--spacing(2))*2)] aspect-square m-2">
+        <div class="group relative flex items-center justify-center w-[calc(100%-(--spacing(2))*2)] aspect-square m-2 transition-[margin,width] duration-350 ease-[ease] hover:m-4 hover:w-[calc(100%-(--spacing(4))*2)]">
             <div class="absolute top-0 left-0 w-5 h-5 border-l-2 border-t-2 border-muted"></div>
             <div class="absolute top-0 right-0 w-5 h-5 border-r-2 border-t-2 border-muted"></div>
             <div class="absolute bottom-0 left-0 w-5 h-5 border-l-2 border-b-2 border-muted"></div>
             <div class="absolute bottom-0 right-0 w-5 h-5 border-r-2 border-b-2 border-muted"></div>
-            <Image class="w-10 mb-2 pointer-events-none select-none" src={item.icon} alt={item.text} loading="lazy" />
-            <p class="text-body-md">{item.text}</p>
+
+            <div class="flex flex-col items-center transition-[scale] duration-300 ease-[ease] group-hover:scale-[1.15]">
+                <div
+                    class="mb-2 size-[3cqi] pointer-events-none select-none text-black [&>svg]:fill-current"
+                    set:html={item.icon}
+                />
+                <p class="text-body-md">{item.text}</p>
+            </div>
         </div>
     ))}
 </div>

@@ -13,7 +13,7 @@ const { index, title, slug, year, href, previewSrc } = Astro.props;
 <article class={`item item__${slug} group relative`} data-preview={previewSrc}>
     <a
         href={href}
-        class="grid grid-cols-[16.67%_1fr_16.67%] items-end px-margin py-16"
+        class="@container grid grid-cols-[16.67%_1fr_16.67%] items-end px-margin py-[4.5cqi]"
         aria-label={`${title}, ${year}`}
     >
         <span class="span-text font-secondary text-body-sm font-medium transition-all duration-350 ease-[ease] group-hover:text-off-white">{index}.</span>

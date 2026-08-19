@@ -1,12 +1,13 @@
 ---
 import WorksItem from "../ui/WorksItem.astro";
+
 import rewind from "../../assets/rewind.png";
 import billsCreditCard from "../../assets/bills-credit-card.png";
 import typingGame from "../../assets/typing-game.png";
 import clickerGame from "../../assets/clicker-game.png";
 ---
-<section id="portfolio-section" class="pt-8 mb-72" aria-labelledby="works-title">
-    <div class="grid grid-cols-[1fr_16.67%] mx-margin mb-32">
+<section id="portfolio-section" class="pt-margin mb-[24%]" aria-labelledby="works-title">
+    <div class="@container grid grid-cols-[1fr_16.67%] mx-margin mb-[12%]">
         <h2 class="works_title text-subtitle-lg mr-[20%]">EVERY PROJECT, A STEP FORWARD.</h2>
         <p class="eyebrow self-end">02. SELECTED WORK</p>
     </div>
@@ -18,8 +19,8 @@ import clickerGame from "../../assets/clicker-game.png";
         <WorksItem index="04" title="CLICKER GAME" slug="clicker-game" year="2023" href="https://igsaeg.github.io/clicker-game" previewSrc={clickerGame.src} />
         <div role="separator" aria-hidden="true" class="border-t-2 border-t-faint"></div>
 
-        <div class="mx-margin pt-16">
-            <p class="works_desc text-body-lg col-2 ml-[16.67%] mr-[33.33%]">Built through curiosity and iterations. I like to keep things simple and straightforward. Every project teaches me something new.</p>
+        <div class="@container mx-margin pt-[4.5cqi]">
+            <p class="works_desc text-body-lg col-2 ml-[16.67%]">Built through curiosity and iterations. I like to<br>keep things simple and straightforward.<br>Every project teaches me something new.</p>
         </div>
     </div>
 
@@ -60,6 +61,6 @@ import clickerGame from "../../assets/clicker-game.png";
 
     document.fonts.ready.then(() => {
         revealText(document.querySelector(".works_title"), { type: "chars", scroll: true, stagger: 0.02, duration: 0.8 } as any);
-        revealText(document.querySelector(".works_desc"), { type: "lines", scroll: true, stagger: 0.2, duration: 0.8 } as any);
+        revealText(document.querySelector(".works_desc"), { type: "lines", scroll: true, stagger: 0.15, duration: 0.8 } as any);
     });
 </script>

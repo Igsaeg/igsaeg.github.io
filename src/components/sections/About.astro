@@ -3,26 +3,31 @@ import ParallaxImg from '../ui/ParallaxImg.astro';
 import TechItem from '../ui/TechItem.astro'
 
 import portrait from '../../assets/portrait.jpg';
-import html from '../../assets/icons/html5-logo.svg'
-import css from '../../assets/icons/css3-logo.svg'
-import javascript from '../../assets/icons/javascript-logo.svg'
-import python from '../../assets/icons/python-logo.svg'
-import tailwind from '../../assets/icons/tailwind-logo.svg'
-import gsap from '../../assets/icons/gsap-logo.svg'
-import lenis from '../../assets/icons/lenis-logo.png'
-import astro from '../../assets/icons/astro-logo.svg'
-import react from '../../assets/icons/react-logo.svg'
+import html from '../../assets/icons/html5-logo.svg?raw';
+import css from '../../assets/icons/css3-logo.svg?raw';
+import javascript from '../../assets/icons/javascript-logo.svg?raw';
+import python from '../../assets/icons/python-logo.svg?raw';
+import tailwind from '../../assets/icons/tailwind-logo.svg?raw';
+import gsap from '../../assets/icons/gsap-logo.svg?raw';
+import lenis from '../../assets/icons/lenis-logo.svg?raw';
+import astroLogo from '../../assets/icons/astro-logo.svg?raw';
+import react from '../../assets/icons/react-logo.svg?raw';
+import vite from '../../assets/icons/vite-logo.svg?raw';
+import git from '../../assets/icons/git-logo.svg?raw';
+import github from '../../assets/icons/github-logo.svg?raw';
+
+const astro = astroLogo;
 ---
-<section id="about-me-section" class="pb-24 mx-margin">
-    <div class="grid grid-cols-[66.67%_1fr] mb-36">
+<section id="about-me-section" class="@container mx-margin pb-margin">
+    <div class="grid grid-cols-[1fr_auto] mb-[12%]">
         <h1 class="about_title text-title-md">BEHIND THE SCREEN.</h1>
 
-        <svg class="text-black h-32 self-end justify-self-end" aria-hidden="true" aria-label="Decorative divider" viewBox="-20.34 24.84 60.72 60.72" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="0">
+        <svg class="text-black h-[40%] self-end justify-self-end" aria-hidden="true" aria-label="Decorative divider" viewBox="-20.34 24.84 60.72 60.72" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="0">
             <polygon transform="rotate(45, 8.333, 8.333)" points="78.575,33.787 47.444,64.918 47.444,2.124 37.887,2.124 37.887,64.918 6.757,33.787 0,40.543 42.667,83.21 85.333,40.543"/>
         </svg>
     </div>
 
-    <div class="flex mb-40">
+    <div class="flex mb-[12%]">
         <ParallaxImg class="w-[33.33%] shrink-0" src={portrait} alt="Portrait of me" loading="lazy" />
 
         <div class="flex flex-col justify-between flex-1">
@@ -32,8 +37,8 @@ import react from '../../assets/icons/react-logo.svg'
                     <p class="about_eyebrow eyebrow ml-4">03. ABOUT ME</p>
 
                     <div class="mr-[16.67%]">
-                        <p class="about_text text-body-md mb-6">Hi! I'm Kharl, a 20 year old developer based in the Philippines. I focus on front-end development and website designing.</p>
-                        <p class="about_text text-body-md">I build stuff with Astro or React, style with Tailwind CSS, improve user experience using JavaScript and GSAP, and manage my code with Git and GitHub.</p>
+                        <p class="about_text text-body-md mb-6">Hi! I'm Kharl, a 15 year old developer and designer based in the Philippines. I specialize on front-end development and website designing.</p>
+                        <p class="about_text text-body-md mb-6">I view each project as a learning opportunity. Every challenge teaches me something new, and hands-on experience helps me grow as a developer.</p>
                     </div>
                 </div>
         </div>
@@ -44,10 +49,10 @@ import react from '../../assets/icons/react-logo.svg'
             <p class="eyebrow mb-4">04. TECH STACK — HOVER TO VIEW</p>
 
             <ul class="group w-fit">
-                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-6 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="language">LANGUAGES</span></li>
-                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-6 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="framework">FRAMEWORKS</span></li>
-                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-6 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="design">DESIGN</span></li>
-                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-6 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="tools">TOOLS</span></li>
+                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-8 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="language">LANGUAGES</span></li>
+                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-8 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="framework">FRAMEWORKS</span></li>
+                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-8 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="design">DESIGN</span></li>
+                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-8 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="tools">TOOLS</span></li>
             </ul>
         </div>
 
@@ -75,9 +80,9 @@ import react from '../../assets/icons/react-logo.svg'
             />
             <TechItem class="tech_item hidden" data-category="tools"
                 content={[
-                    {text: "Vite", icon: portrait},
-                    {text: "Git", icon: portrait},
-                    {text: "GitHub", icon: portrait}
+                    {text: "Vite", icon: vite},
+                    {text: "Git", icon: git},
+                    {text: "GitHub", icon: github}
                 ]}
             />
         </div>
@@ -93,8 +98,8 @@ import react from '../../assets/icons/react-logo.svg'
         const children = el.querySelectorAll(":scope > div");
         gsap.killTweensOf(children);
         gsap.fromTo(children,
-            { opacity: 0, scale: 1.1 },
-            { opacity: 1, scale: 1, stagger: 0.08, duration: 1.2, ease: "power4.out" }
+            { opacity: 0, scale: 1.15 },
+            { opacity: 1, scale: 1, stagger: 0.09, duration: 1.2, ease: "power4.out" }
         );
     }
 
@@ -121,10 +126,5 @@ import react from '../../assets/icons/react-logo.svg'
     
     document.fonts.ready.then(() => {
         revealText(document.querySelector(".about_title"), { type: "chars", scroll: true, stagger: 0.04, duration: 0.7 } as any);
-        revealText(document.querySelector(".about_subtitle"), { type: "lines", scroll: true, stagger: 0.2, duration: 0.8 } as any);
-        revealText(document.querySelector(".about_eyebrow"), { type: "chars", scroll: true, customTrigger: document.querySelector(".about_subtitle"), stagger: 0.035, duration: 0.9, delay: 0.5 } as any);
-        document.querySelectorAll(".about_text").forEach(el => {
-            revealText(el, { type: "lines", scroll: true, customTrigger: document.querySelector(".about_subtitle"), stagger: 0.12, duration: 0.8, delay: 0.55 } as any);
-        });
     });
 </script>

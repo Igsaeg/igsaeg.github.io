@@ -46,16 +46,16 @@ body {
     --color-muted: #777;
     --color-black: #111;
 
-    --text-title-lg: 14.4cqw;
-    --text-title-md: 10rem;
-    --text-subtitle-lg: 6rem;
-    --text-subtitle-md: 5.25rem;
-    --text-subtitle-sm: 4.75rem;
-    --text-body-lg: 2.25rem;
-    --text-body-md: 1.5rem;
-    --text-body-sm: 1.25rem;
+    --text-title-lg: 14.75cqi;
+    --text-title-md: 11.5cqi;
+    --text-subtitle-lg: 7cqi;
+    --text-subtitle-md: 6cqi;
+    --text-subtitle-sm: 5.5cqi;
+    --text-body-lg: 2.5cqi;
+    --text-body-md: 1.75cqi;
+    --text-body-sm: 1.3cqi;
 
-    --spacing-margin: 2rem;
+    --spacing-margin: 2.25vw;
 }
 
 @layer base {

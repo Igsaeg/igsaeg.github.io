@@ -1,15 +1,16 @@
 ---
 import UnderlineLink from '../ui/UnderlineLink.astro';
 import ParallaxImg from '../ui/ParallaxImg.astro';
+
 import banner from '../../assets/banner.jpg';
 ---
-<section id="hero-section" class="@container pt-20">
-    <h1 class="hero_title text-title-lg whitespace-nowrap tracking-[-5%] mx-5 mb-32">KHARL ALFARO</h1>
+<section id="hero-section" class="@container mx-margin mb-margin pt-20">
+    <h1 class="hero_title text-title-lg tracking-[-5%] mb-32">KHARL ALFARO</h1>
 
-    <div class="grid grid-cols-[55vw_1fr] items-end mx-margin mb-8">
+    <div class="grid grid-cols-[60%_1fr] items-end">
         <div>
             <p class="hero_eyebrow eyebrow mb-2">01. HELLO</p>
-            <p class="hero_bio text-body-lg">A self-taught developer based in the Philippines.<br>Exploring design and code through designing with<br>purpose, aesthetic precision, and clarity.</p>
+            <p class="hero_bio text-body-lg">A self-taught developer based in the Philippines. Exploring design and code through designing with purpose, aesthetic precision, and clarity.</p>
         </div>
 
         <nav aria-label="Contact links" class="hero_links flex flex-col items-end">
@@ -17,9 +18,9 @@ import banner from '../../assets/banner.jpg';
             <UnderlineLink title="kharlfranco26@gmail.com" type="link" where="mailto:kharlfranco26@gmail.com" />
         </nav>
     </div>
-
-    <ParallaxImg class="hero_image" src={banner} alt="Hero banner" loading="eager" />
 </section>
+
+<ParallaxImg class="hero_image" src={banner} alt="Hero banner" loading="eager" />
 
 <script>
     import { gsap, revealText } from '../../scripts/gsap.js';
