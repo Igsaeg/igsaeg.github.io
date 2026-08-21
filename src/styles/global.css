@@ -19,25 +19,7 @@
     font-display: swap;
 }
 
-::selection {
-    background: theme(--color-muted);
-    color: theme(--color-off-white);
-}
-
-* { box-sizing: border-box; }
-
-html {
-    font-size: 16px;
-    scrollbar-color: theme(--color-muted) theme(--color-faint);
-}
-
-body {
-    margin: 0;
-    background-color: #fff;
-}
-
-
-@theme default {
+@theme {
     --font-primary: 'Inter';
     --font-secondary: 'Stack Sans Text';
 
@@ -51,34 +33,65 @@ body {
     --text-subtitle-lg: 7cqi;
     --text-subtitle-md: 6cqi;
     --text-subtitle-sm: 5.5cqi;
-    --text-body-lg: 2.5cqi;
+    --text-body-lg: max(1.5rem,2.5cqi);
     --text-body-md: 1.75cqi;
     --text-body-sm: 1.3cqi;
 
     --spacing-margin: 2.25vw;
 }
 
+@layer components {
+    .eyebrow {
+        @apply text-body-sm text-muted font-semibold 
+    }
+
+    .divider {
+        @apply border-t-2 border-t-faint
+    }
+
+    .tech {
+        @apply text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-8 hover:cursor-pointer group-hover:text-muted hover:text-black;
+    }
+
+    .transition-450-out {
+        @apply duration-450 ease-out
+    }
+}
+
 @layer base {
-    h1, h2, h3, h4, p, .span-text {
+    * { box-sizing: border-box; }
+
+    html {
+        font-size: 16px;
+        scrollbar-color: theme(--color-muted) theme(--color-faint);
+    }
+
+    body {
+        margin: 0;
+        background-color: #fff;
+    }
+
+    ::selection {
+        background: theme(--color-muted);
+        color: theme(--color-off-white);
+    }
+
+    h1, h2, h3, h4, h5, h6, p, .span-text {
         font-family: theme(--font-primary);
         font-weight: 500;
         color: theme(--color-black);
         margin: 0;
         font-kerning: none;
-        -webkit-font-kerning: none;
     }
-    h1, h2, h3, h4 { line-height: 1; }
+
+    h1, h2, h3, h4, h5, h6 { line-height: 1; }
 
     p, .span-text { line-height: 1.2; }
     
+    .span-text { display: block; }
+
     a {
         color: inherit;
         text-decoration: none;
-    }
-
-    .eyebrow {
-        font-size: theme(--text-body-sm);
-        font-weight: 600;
-        color: theme(--color-muted);
     }
 }

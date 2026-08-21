@@ -4,18 +4,21 @@ import ParallaxImg from '../ui/ParallaxImg.astro';
 
 import banner from '../../assets/banner.jpg';
 ---
-<section id="hero-section" class="@container mx-margin mb-margin pt-20">
-    <h1 class="hero_title text-title-lg tracking-[-5%] mb-32">KHARL ALFARO</h1>
+<section id="hero-section" class="@container flex flex-col justify-between h-[80dvh] mx-margin mb-margin pt-20">
+    <h1 class="hero_title text-title-lg tracking-[-5%]">KHARL ALFARO</h1>
 
-    <div class="grid grid-cols-[60%_1fr] items-end">
+    <div class="grid grid-cols-[1fr_16.67%] gap-6 justify-end md:items-end flex-col md:flex-row">
         <div>
-            <p class="hero_eyebrow eyebrow mb-2">01. HELLO</p>
-            <p class="hero_bio text-body-lg">A self-taught developer based in the Philippines. Exploring design and code through designing with purpose, aesthetic precision, and clarity.</p>
+            <span class="hero_eyebrow eyebrow span-text mb-2">01. HELLO</span>
+            <p class="hero_bio text-body-lg">A self-taught developer based in the Philippines.<br>Exploring design and code through designing with<br>purpose, aesthetic precision, and clarity.</p>
         </div>
 
-        <nav aria-label="Contact links" class="hero_links flex flex-col items-end">
-            <UnderlineLink title="GitHub" type="link" where="https://github.com/Igsaeg" />
-            <UnderlineLink title="kharlfranco26@gmail.com" type="link" where="mailto:kharlfranco26@gmail.com" />
+        <nav aria-label="Contact links" class="hero_links">
+            <span class="hero_eyebrow eyebrow span-text mb-2">FIND ME</span>
+            <ul>
+                <li><UnderlineLink title="GitHub" type="link" where="https://github.com/Igsaeg/" /></li>
+                <li><UnderlineLink title="Instagram" type="link" where="https://instagram.com/Igsaeg_/" /></li>
+            </ul>
         </nav>
     </div>
 </section>
@@ -37,6 +40,7 @@ import banner from '../../assets/banner.jpg';
         }, "heroIn+=0.8")
         .add(revealText(document.querySelector('.hero_eyebrow'), { type: "chars", stagger: 0.04, duration: 0.9} as any), "heroIn+=0.85")
         .add(revealText(document.querySelector('.hero_bio'), { type: "lines", stagger: 0.18, duration: 0.8} as any), "heroIn+=0.95")
-        .add(revealText(document.querySelector('.hero_links'), { type: "lines", stagger: 0.18, duration: 0.8} as any), "heroIn+=1.05")
+        .add(revealText(document.querySelector('.hero_links > span'), { type: "lines", stagger: 0.18, duration: 0.8} as any), "heroIn+=1.05")
+        .add(revealText(document.querySelector('.hero_links > ul'), { type: "lines", stagger: 0.18, duration: 0.8} as any), "heroIn+=1.1")
     });
 </script>

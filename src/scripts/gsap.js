@@ -1,10 +1,11 @@
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CustomEase } from "gsap/CustomEase";
 
-gsap.registerPlugin(SplitText, ScrollTrigger);
+gsap.registerPlugin(SplitText, ScrollTrigger, CustomEase);
 
-export { gsap };
+export { gsap, CustomEase };
 export const triggerAt = "top 70%";
 
 const createSplit = (el) => new SplitText(el, { type: "lines,chars,words", mask: "lines" });

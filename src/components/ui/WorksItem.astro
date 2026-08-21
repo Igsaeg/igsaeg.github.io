@@ -8,25 +8,24 @@ interface Props {
     previewSrc: string;
 }
 const { index, title, slug, year, href, previewSrc } = Astro.props;
+
+import arrow from '../../assets/icons/arrow-sw.svg?raw';
 ---
-<div role="separator" aria-hidden="true" class="border-t-2 border-t-faint"></div>
+<div role="separator" aria-hidden="true" class="divider"></div>
 <article class={`item item__${slug} group relative`} data-preview={previewSrc}>
     <a
         href={href}
         class="@container grid grid-cols-[16.67%_1fr_16.67%] items-end px-margin py-[4.5cqi]"
         aria-label={`${title}, ${year}`}
     >
-        <span class="span-text font-secondary text-body-sm font-medium transition-all duration-350 ease-[ease] group-hover:text-off-white">{index}.</span>
+        <span class="span-text font-secondary text-body-sm font-medium transition-450-out group-hover:text-off-white">{index}.</span>
     
-        <h2 class="text-subtitle-sm font-semibold leading-[0.8] transition-all duration-350 ease-[ease] group-hover:scale-[0.98] group-hover:text-off-white">{title}</h2>
+        <h2 class="text-subtitle-sm font-semibold leading-[0.8] transition-450-out group-hover:scale-[0.98] group-hover:text-off-white">{title}</h2>
     
         <div class="flex justify-between items-end">
-            <span class="span-text font-secondary text-body-md font-normal transition-all duration-350 ease-[ease] group-hover:text-off-white">{year}</span>
-
-            <svg class="text-black w-4 self-end transition-all duration-250 ease-[ease] group-hover:text-off-white group-hover:w-5" aria-hidden="true" aria-label="Decorative divider" viewBox="-20.34 24.84 60.72 60.72" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="0">
-                <polygon transform="rotate(180, 10.02, 55.2) rotate(45, 8.333, 8.333)" points="78.575,33.787 47.444,64.918 47.444,2.124 37.887,2.124 37.887,64.918 6.757,33.787 0,40.543 42.667,83.21 85.333,40.543"/>
-            </svg>
+            <span class="span-text font-secondary text-body-md font-normal transition-450-out group-hover:text-off-white">{year}</span>
+            <div class="size-[1.25cqi] pointer-events-none select-none text-black transition-450-out group-hover:text-off-white group-hover:rotate-90 group-hover:scale-[1.1]" set:html={arrow} />
         </div>
     </a>
-    <span class="absolute bottom-0 left-0 h-0 -z-1 w-full bg-black transition-all duration-350 ease-[ease] group-hover:h-full"></span>
+    <span class="absolute bottom-0 left-0 h-0 -z-1 w-full bg-black transition-450-out group-hover:h-full"></span>
 </article>

@@ -3,6 +3,7 @@ import ParallaxImg from '../ui/ParallaxImg.astro';
 import TechItem from '../ui/TechItem.astro'
 
 import portrait from '../../assets/portrait.jpg';
+import arrow from '../../assets/icons/arrow-sw.svg?raw';
 import html from '../../assets/icons/html5-logo.svg?raw';
 import css from '../../assets/icons/css3-logo.svg?raw';
 import javascript from '../../assets/icons/javascript-logo.svg?raw';
@@ -19,40 +20,38 @@ import github from '../../assets/icons/github-logo.svg?raw';
 const astro = astroLogo;
 ---
 <section id="about-me-section" class="@container mx-margin pb-margin">
-    <div class="grid grid-cols-[1fr_auto] mb-[12%]">
+    <div class="grid grid-cols-[1fr_auto] items-end mb-[12%]">
         <h1 class="about_title text-title-md">BEHIND THE SCREEN.</h1>
 
-        <svg class="text-black h-[40%] self-end justify-self-end" aria-hidden="true" aria-label="Decorative divider" viewBox="-20.34 24.84 60.72 60.72" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="0">
-            <polygon transform="rotate(45, 8.333, 8.333)" points="78.575,33.787 47.444,64.918 47.444,2.124 37.887,2.124 37.887,64.918 6.757,33.787 0,40.543 42.667,83.21 85.333,40.543"/>
-        </svg>
+        <div class="size-[10cqi] pointer-events-none select-none text-black" set:html={arrow} />
     </div>
 
     <div class="flex mb-[12%]">
-        <ParallaxImg class="w-[33.33%] shrink-0" src={portrait} alt="Portrait of me" loading="lazy" />
+        <ParallaxImg class="about_image w-[33.33%] shrink-0" src={portrait} alt="Portrait of me" loading="lazy" />
 
         <div class="flex flex-col justify-between flex-1">
-                <h2 class="about_subtitle text-subtitle-md ml-4">LEARNING NEVER<br>STOPS, NEITHER DO I.</h2>
-    
-                <div class="grid grid-cols-[25%_1fr]">
-                    <p class="about_eyebrow eyebrow ml-4">03. ABOUT ME</p>
+            <h2 class="about_subtitle text-subtitle-md ml-auto mb-[4%]">LEARNING NEVER<br>STOPS, NEITHER DO I.</h2>
 
-                    <div class="mr-[16.67%]">
-                        <p class="about_text text-body-md mb-6">Hi! I'm Kharl, a 15 year old developer and designer based in the Philippines. I specialize on front-end development and website designing.</p>
-                        <p class="about_text text-body-md mb-6">I view each project as a learning opportunity. Every challenge teaches me something new, and hands-on experience helps me grow as a developer.</p>
-                    </div>
+            <div class="grid grid-cols-[25%_1fr]">
+                <span class="about_body eyebrow span-text justify-self-end">03. ABOUT ME</span>
+
+                <div class="ml-[16.67%]">
+                    <p class="about_body text-body-md mb-6">Hi! I'm Kharl, a 15 year old developer and designer based in the Philippines. I specialize on front end development and website designing.</p>
+                    <p class="about_body text-body-md">I view each project as a learning opportunity. Every challenge teaches me something new, and hands on experience helps me grow as a developer.</p>
                 </div>
+            </div>
         </div>
     </div>
 
     <div class="flex justify-between h-120">
         <div>
-            <p class="eyebrow mb-4">04. TECH STACK — HOVER TO VIEW</p>
+            <span class="eyebrow span-text mb-4">04. TECH STACK — HOVER TO VIEW</span>
 
             <ul class="group w-fit">
-                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-8 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="language">LANGUAGES</span></li>
-                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-8 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="framework">FRAMEWORKS</span></li>
-                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-8 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="design">DESIGN</span></li>
-                <li><span class="tech span-text text-subtitle-md leading-none transition-all duration-350 ease-[ease] hover:ml-8 hover:cursor-pointer group-hover:text-muted hover:text-black" data-target="tools">TOOLS</span></li>
+                <li><span class="tech span-text" data-target="language">LANGUAGES</span></li>
+                <li><span class="tech span-text" data-target="framework">FRAMEWORKS</span></li>
+                <li><span class="tech span-text" data-target="design">DESIGN</span></li>
+                <li><span class="tech span-text" data-target="tools">TOOLS</span></li>
             </ul>
         </div>
 
@@ -90,7 +89,7 @@ const astro = astroLogo;
 </section>
 
 <script>
-    import { gsap, revealText } from '../../scripts/gsap.js';
+    import { gsap, CustomEase, revealText, triggerAt  } from '../../scripts/gsap.js';
 
     let activeItem: HTMLElement | null = null;
 
@@ -98,7 +97,7 @@ const astro = astroLogo;
         const children = el.querySelectorAll(":scope > div");
         gsap.killTweensOf(children);
         gsap.fromTo(children,
-            { opacity: 0, scale: 1.15 },
+            { opacity: 0, scale: 1.15 },    
             { opacity: 1, scale: 1, stagger: 0.09, duration: 1.2, ease: "power4.out" }
         );
     }
@@ -125,6 +124,22 @@ const astro = astroLogo;
     });
     
     document.fonts.ready.then(() => {
+        const aboutImage = document.querySelector(".about_image") as HTMLElement;
+
         revealText(document.querySelector(".about_title"), { type: "chars", scroll: true, stagger: 0.04, duration: 0.7 } as any);
+        revealText(document.querySelector(".about_subtitle"), { type: "lines", scroll: true, stagger: 0.2, duration: 0.8 } as any);
+        gsap.from(aboutImage, {
+            clipPath: "inset(0 0 100% 0)",
+            duration: 1,
+            ease: CustomEase.create("custom", "M0,0 C0.8,0 0.4,1 1,1 "),
+            scrollTrigger: {
+                trigger: aboutImage,
+                start: triggerAt,
+            }
+        });
+        revealText(document.querySelector(".about_eyebrow"), { type: "chars", scroll: true, customTrigger: document.querySelector(".about_subtitle"), stagger: 0.035, duration: 0.9, delay: 0.5} as any);
+        document.querySelectorAll(".about_body").forEach(el => {
+            revealText(el, { type: "lines", scroll: true, customTrigger: document.querySelector(".about_subtitle"), stagger: 0.12, duration: 0.7, delay: 0.55} as any);
+        });
     });
 </script>

@@ -1,21 +1,21 @@
 ---
 import UnderlineLink from "../ui/UnderlineLink.astro";
 ---
-<footer class="@container bg-black px-margin py-4" aria-label="Footer">
+<footer class="@container bg-black px-margin pt-margin pb-4" aria-label="Footer">
     <div class="grid grid-cols-2 pb-[12%]">
         <section aria-labelledby="contact-heading">
             <p class="text-body-lg text-off-white mb-10">A developer exploring minimalist design through thoughtful and functional web experiences.</p>
 
             <div>
-                <p class="eyebrow mb-2">CONTACT ME</p>
+                <span class="eyebrow span-text mb-2">CONTACT ME</span>
                 <UnderlineLink title="kharlfranco26@gmail.com" type="link" where="mailto:kharlfranco26@gmail.com" dark={true} />
             </div>
         </section>
 
         <nav aria-label="Footer navigation" class="grid grid-cols-2 w-[66.67%] justify-self-end">
             <div>
-                <h3 class="eyebrow mb-2">GO TO</h3>
-                <ul class="flex flex-col gap-1 list-none p-0 m-0">
+                <span class="eyebrow span-text mb-2">GO TO</span>
+                <ul>
                     <li><UnderlineLink title="Home" type="scroll" where="#hero-section" dark={true} /></li>
                     <li><UnderlineLink title="Works" type="scroll" where="#portfolio-section" dark={true} /></li>
                     <li><UnderlineLink title="About" type="scroll" where="#about-me-section" dark={true} /></li>
@@ -23,8 +23,8 @@ import UnderlineLink from "../ui/UnderlineLink.astro";
             </div>  
             
             <div>
-                <h3 class="eyebrow mb-2">FIND ME</h3>
-                <ul class="flex flex-col gap-1 p-0 m-0">
+                <span class="eyebrow span-text mb-2">FIND ME</span>
+                <ul>
                     <li><UnderlineLink title="GitHub" type="link" where="https://github.com/Igsaeg/" dark={true} /></li>
                     <li><UnderlineLink title="Instagram" type="link" where="https://instagram.com/Igsaeg_/" dark={true} /></li>
                 </ul>
