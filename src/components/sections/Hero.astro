@@ -4,16 +4,16 @@ import ParallaxImg from '../ui/ParallaxImg.astro';
 
 import banner from '../../assets/banner.jpg';
 ---
-<section id="hero-section" class="@container flex flex-col justify-between h-[80dvh] mx-margin mb-margin pt-20">
-    <h1 class="hero_title text-title-lg tracking-[-5%]">KHARL ALFARO</h1>
+<section id="hero-section" class="@container flex flex-col justify-between md:h-[80dvh] h-screen mx-margin md:mb-margin mb-[24%] md:pt-[6%] pt-[12dvh]">
+    <h1 class="hero_title text-title-lg tracking-[-5%] leading-[0.85]">KHARL ALFARO</h1>
 
-    <div class="grid grid-cols-[1fr_16.67%] gap-6 justify-end md:items-end flex-col md:flex-row">
-        <div>
+    <div class="md:grid md:grid-cols-[1fr_16.67%] flex flex-col md:items-end">
+        <div class="mb-margin">
             <span class="hero_eyebrow eyebrow span-text mb-2">01. HELLO</span>
-            <p class="hero_bio text-body-lg">A self-taught developer based in the Philippines.<br>Exploring design and code through designing with<br>purpose, aesthetic precision, and clarity.</p>
+            <p class="hero_bio text-body-lg">A self-taught developer based in the<br>Philippines. Exploring design and code<br>through building experiences.</p>
         </div>
 
-        <nav aria-label="Contact links" class="hero_links">
+        <nav aria-label="Contact links" class="hero_links max-md:-order-1 max-md:mb-[4%]">
             <span class="hero_eyebrow eyebrow span-text mb-2">FIND ME</span>
             <ul>
                 <li><UnderlineLink title="GitHub" type="link" where="https://github.com/Igsaeg/" /></li>
@@ -23,7 +23,7 @@ import banner from '../../assets/banner.jpg';
     </div>
 </section>
 
-<ParallaxImg class="hero_image" src={banner} alt="Hero banner" loading="eager" />
+<ParallaxImg class="hero_image max-md:hidden" src={banner} alt="Hero banner" loading="eager" />
 
 <script>
     import { gsap, revealText } from '../../scripts/gsap.js';
@@ -32,7 +32,7 @@ import banner from '../../assets/banner.jpg';
         const tl = gsap.timeline();
 
         tl.addLabel("heroIn")
-        .add(revealText(document.querySelector('.hero_title'), { type: "chars", yPercent: -100, stagger: 0.05, duration: 1.1, ease: "power4.out" } as any), "heroIn+=0.2")
+        .add(revealText(document.querySelector('.hero_title'), { type: "chars", stagger: 0.05, duration: 1.1, ease: "power4.out" } as any), "heroIn+=0.2")
         .from(document.querySelector('.hero_image .parallax-wrapper'), {
             clipPath: 'inset(40% 0 0 0)',
             duration: 1.1,

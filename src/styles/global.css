@@ -33,11 +33,21 @@
     --text-subtitle-lg: 7cqi;
     --text-subtitle-md: 6cqi;
     --text-subtitle-sm: 5.5cqi;
-    --text-body-lg: max(1.5rem,2.5cqi);
-    --text-body-md: 1.75cqi;
-    --text-body-sm: 1.3cqi;
+    --text-body-lg: max(2.5cqi, 1.5rem);
+    --text-body-md: max(1.75cqi, 1rem);
+    --text-body-sm: max(1.3cqi, 0.9rem);
 
     --spacing-margin: 2.25vw;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --text-title-lg: max(18cqi, 6rem);
+
+        --text-body-lg: max(4.25cqi, 1.25rem);
+        --text-body-md: max(3.75cqi, 0.75rem);
+        --text-body-sm: max(2.5cqi, 0.65rem);
+    }
 }
 
 @layer components {
